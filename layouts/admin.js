@@ -1,4 +1,4 @@
-import {NavLink} from 'components/link'
+import { NavLink } from 'components/link'
 const Default = ({ children }) => {
   return (
     <div>

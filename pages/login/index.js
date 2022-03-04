@@ -19,19 +19,19 @@ const Login = ({posts}) => {
   )
 }
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-//   const posts = await res.json()
-//   return {
-//     props: { 
-//       results: posts
-//     }
-//   }
-// }
-Login.Layout = AuthLayout
-Login.getInitialProps = async (ctx) => {
+export async function getServerSideProps(context) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
   const posts = await res.json()
-  return { posts }
+  return {
+    props: { 
+      posts
+    }
+  }
 }
+Login.Layout = AuthLayout
+// Login.getInitialProps = async (ctx) => {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
+//   const posts = await res.json()
+//   return { posts }
+// }
 export default Login

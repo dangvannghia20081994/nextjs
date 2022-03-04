@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  trailingSlash: true,
+  trailingSlash: false,
   eslint: {
     dirs: ['pages', 'utils'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
     // ignoreDuringBuilds: true,

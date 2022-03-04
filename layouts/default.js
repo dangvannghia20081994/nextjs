@@ -3,11 +3,11 @@ const Default = ({ children }) => {
   return (
     <div>
       <nav>
-        <NavLink exact href="/login">
+        <NavLink href="/login">
           <a>Login</a>
         </NavLink>{' '}
         |
-        <NavLink exact href="/">
+        <NavLink href="/">
           <a>Home</a>
         </NavLink>{' '}
         |
