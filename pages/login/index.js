@@ -1,6 +1,11 @@
 import { NextSeo } from 'next-seo';
 import AuthLayout from 'layouts/auth'
-
+import { NavLink } from 'components/link'
+import styles from './index.module.scss'
+console.log(styles);
+// https://colorlib.com/wp/html5-and-css3-login-forms/
+// https://colorlib.com/etc/lf/Login_v4/index.html
+// https://colorlib.com/etc/lf/Login_v3/index.html
 const Login = () => {
   const meta = {
     title: 'Login',
@@ -9,7 +14,24 @@ const Login = () => {
   return (
     <>
       <NextSeo {...meta} />
-      <div>Login</div>
+      <div className={`${styles.logo} m-auto d-flex align-items-center justify-content-center bg-white rounded-circle`}>
+        <i className="fa-regular fa-star-shooting"></i>
+      </div>
+      <div className={`${styles.title} my-4 text-uppercase text-center fw-bold`}>Login</div>
+      <div className={`${styles.formInput} position-relative`}>
+        <input type='text' placeholder='UserName' name="username" />
+        <span className={`${styles.label} `}></span>
+      </div>
+      <div className={`${styles.formInput} position-relative`}>
+        <input type='text' placeholder='Password' name="password" />
+        <span className={`${styles.label} ${styles.password}`}></span>
+      </div>
+      <div className={`text-center`}>
+        <button className={`${styles.action}`}>Login</button>
+      </div>
+      <div className={`${styles.forgot} text-center`}>
+        <NavLink href="/forgot"><a>Forgot Password</a></NavLink>
+      </div>
     </>
   )
 }
