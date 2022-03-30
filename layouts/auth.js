@@ -1,26 +1,13 @@
-import { NavLink } from 'components/link'
+import styles from './auth.module.scss'
+console.log(styles);
 const Default = ({ children }) => {
   return (
-    <div>
-      <nav>
-        <NavLink href="/login">
-          <a>Login</a>
-        </NavLink>{' '}
-        |
-        <NavLink href="/">
-          <a>Home</a>
-        </NavLink>{' '}
-        |
-        <NavLink href="/about">
-          <a>About</a>
-        </NavLink>{' '}
-        |
-        <NavLink href="/contact">
-          <a>Contact</a>
-        </NavLink>
-      </nav>
-      {children}
-      <footer>{'I`m here to stay'}</footer>
+    <div className={`${styles.auth} d-flex min-vh-100 w-100 p-3 justify-content-center align-items-center position-relative flex-wrap`}>
+      <div className={`${styles.wapper} overflow-hidden`}>
+        <div className={`w-100`}>
+          {children}
+        </div>
+      </div>
     </div>
   )
 }

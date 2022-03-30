@@ -1,10 +1,12 @@
 const Home = ({ results: data }) => {
   return (
+    <>
     <div className='hahaha'>
       {data.map((d, idx) => (
         <li key={idx}>{d.id}</li>
       ))}
     </div>
+    </>
   )
 }
 export async function getServerSideProps(context) {
