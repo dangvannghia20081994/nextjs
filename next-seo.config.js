@@ -20,7 +20,7 @@ export default {
     },
     {
       name: 'viewport',
-      content: 'width=device-width, initial-scale=1,Maximum-scale = 1.0, user-scalable = 0'
+      content: 'width=device-width, initial-scale=1,maximum-scale = 5'
     }
   ],
   additionalLinkTags:[

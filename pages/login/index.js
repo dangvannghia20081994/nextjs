@@ -1,8 +1,9 @@
 import { NextSeo } from 'next-seo';
+import dynamic from 'next/dynamic'
 import AuthLayout from 'layouts/auth'
-import { NavLink } from 'components/link'
+// import { NavLink } from 'components/link'
+const NavLink = dynamic(() => import('components/link').then((mod) => mod.NavLink))
 import styles from './index.module.scss'
-console.log(styles);
 // https://colorlib.com/wp/html5-and-css3-login-forms/
 // https://colorlib.com/etc/lf/Login_v4/index.html
 // https://colorlib.com/etc/lf/Login_v3/index.html
@@ -30,7 +31,7 @@ const Login = () => {
         <button className={`${styles.action}`}>Login</button>
       </div>
       <div className={`${styles.forgot} text-center`}>
-        <NavLink href="/forgot"><a>Forgot Password</a></NavLink>
+        <NavLink href="/"><a>Forgot Password</a></NavLink>
       </div>
     </>
   )

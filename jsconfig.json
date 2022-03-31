@@ -2,6 +2,14 @@
   "compilerOptions": {
     "sourceMap": true,
     "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    }
   },
   "exclude": [
     "node_modules",

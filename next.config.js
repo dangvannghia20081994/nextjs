@@ -1,4 +1,7 @@
-/** @type {import('next').NextConfig} */
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+const withPWA = require('next-pwa')
 const nextConfig = {
   reactStrictMode: false,
   trailingSlash: false,
@@ -19,7 +22,104 @@ const nextConfig = {
     // removeConsole: {
     //   exclude: ['error'],
     // },
-  }
+  },
+  reactStrictMode: true,
+  pwa: {
+    disable: process.env.NODE_ENV === "development",
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    runtimeCaching: [
+      {
+        urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'google-font',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'static-font-assets',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /\.(?:jpg|jpeg|gif|png|svg|ico|webp)$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'static-image-assets',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /\.(?:js)$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'static-js-assets',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /\.(?:css|less)$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'static-style-assets',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /\.(?:json|xml|csv)$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'static-data',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /\/api\/.*$/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'apis',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+      {
+        urlPattern: /.*/i,
+        handler: 'NetworkFirst',
+        options: {
+          cacheName: 'other',
+          expiration: {
+            maxEntries: 4,
+            maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
+          }
+        }
+      },
+    ]
+  },
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(withPWA(nextConfig))

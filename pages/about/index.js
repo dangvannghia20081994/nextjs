@@ -1,7 +1,6 @@
 import { NextSeo } from 'next-seo';
 import AuthLayout from 'layouts/auth'
 import TestComponent from 'components/test'
-
 const About = ({ posts }) => {
   const meta = {
     title: 'About',
