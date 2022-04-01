@@ -24,6 +24,14 @@ io.use(function (socket, next) {
 })
 io.of('/auth').on('connection', (socket) => {
   console.log(`Auth client with ID of ${socket.id} connected!`)
+  socket.on('join-room', (room) => {
+    socket.join(room);
+    // const rooms = socket.adapter.rooms;
+    // console.log(rooms)
+  })
+  socket.on('leave-room', (room) => {
+    socket.leave(room);
+  })
 })
 io.of('/app').on('connection', (socket) => {
   // socket.emit('SOME_EVENT', socket.id)

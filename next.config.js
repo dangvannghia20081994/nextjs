@@ -23,6 +23,23 @@ const nextConfig = {
     //   exclude: ['error'],
     // },
   },
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/home',
+      }
+    ]
+  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/home',
+  //       destination: '/', // Matched parameters can be used in the destination
+  //       permanent: true,
+  //     },
+  //   ]
+  // },
   reactStrictMode: true,
   pwa: {
     disable: process.env.NODE_ENV === "development",

@@ -2,7 +2,7 @@ import {useSocket} from 'common/hook'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
 const Default = ({ children }) => {
-  const socket = useSocket('http://localhost:8080/app')
+  const socket = useSocket('http://localhost:8080/auth')
   useEffect(() => {
     if (socket) {
       window.socket = socket

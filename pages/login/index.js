@@ -1,13 +1,13 @@
 import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic'
 import AuthLayout from 'layouts/auth'
-// import { NavLink } from 'components/link'
 const NavLink = dynamic(() => import('components/link').then((mod) => mod.NavLink))
-import styles from './index.module.scss'
+import styles from './Login.module.scss'
 // https://colorlib.com/wp/html5-and-css3-login-forms/
 // https://colorlib.com/etc/lf/Login_v4/index.html
 // https://colorlib.com/etc/lf/Login_v3/index.html
-const Login = () => {
+const Login = ({ posts }) => {
+  console.log(posts)
   const meta = {
     title: 'Login',
     description: 'Page login'
@@ -37,9 +37,17 @@ const Login = () => {
   )
 }
 Login.Layout = AuthLayout
-// Login.getInitialProps = async (ctx) => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
-//   const posts = await res.json()
-//   return { posts }
-// }
+Login.getInitialProps = async (ctx) => {
+  const res = await fetch(`https://api-dev.colearn.vn:8415/v1.0/category/subject`, {
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYTg0NjJhZi1kMDJjLTRhZGItOGI4NC0xZmNhZjZlMjljMWMiLCJpYXQiOjE2NDg3MTg1NzgsImV4cCI6MTY4MDI1NDU3OH0.ed2ajdbwkepQOF55NtDyL2a_Oyx8fGxgBt9DwvAMisimdSOs7YttHzzh5UQjFwD8PfK4gLqxBusIC_G4GknoBQ',
+      'Nghiadv': 'aaaaa'
+    },
+  })
+  const posts = await res.json()
+  return { posts }
+}
 export default Login
