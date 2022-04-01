@@ -8,13 +8,16 @@ const Home = ({ posts }) => {
   // console.log(token)
   // console.log(user)
   const sendSocket = () => {
-    socket.emit('haha', 'haha')
+    const socket = window.socket
+    if (socket) {
+      socket.emit('haha', 'haha')
+    }
   }
   return (
     <>
       <button onClick={sendSocket}>sendSocket</button>
       <div className='hahaha'>
-        {posts.map((d, idx) => (
+        {posts.data.map((d, idx) => (
           <li key={idx}>{d.id}</li>
         ))}
       </div>
