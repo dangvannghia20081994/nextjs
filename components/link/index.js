@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export function NavLink({ href, as, children, ...props }) {
+export default function NavLink({ href, as, children, ...props }) {
   const { asPath } = useRouter();
   const currentPath = asPath;
   const targetPath = as || href;

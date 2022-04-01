@@ -1,6 +1,9 @@
 import {useSocket} from 'common/hook'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
+// https://colorlib.com/wp/html5-and-css3-login-forms/
+// https://colorlib.com/etc/lf/Login_v4/index.html
+// https://colorlib.com/etc/lf/Login_v3/index.html
 const Default = ({ children }) => {
   const socket = useSocket('http://localhost:8080/auth')
   useEffect(() => {
