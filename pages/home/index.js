@@ -1,4 +1,5 @@
 import AuthLayout from 'layouts/auth'
+import { NextSeo } from 'next-seo'
 import { useSelector, useDispatch } from 'react-redux'
 import { useToken } from 'common/hook'
 import Image from 'next/image'
@@ -14,14 +15,19 @@ const Home = ({ posts }) => {
       socket.emit('haha', 'haha')
     }
   }
+  const meta = {
+    title: 'Login',
+    description: 'Page login'
+  }
   return (
     <>
-      <button onClick={sendSocket}>sendSocket</button>
+      <NextSeo {...meta} />
+      <button className='text-3xl font-bold underline' onClick={sendSocket}><i className="fa-duotone fa-browser"></i> sendSocket</button>
       <div className='hahaha'>
         {posts.data.map((d, idx) => (
           <Image key={idx}
             src={`https://img.ophim.tv/uploads/movies/cong-chua-cua-anh-de-thumb.jpg?t=${idx}`}
-            width={1920}
+            width={400}
             height={555}
             loading='lazy'
             layout='intrinsic'

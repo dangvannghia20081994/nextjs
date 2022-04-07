@@ -141,7 +141,7 @@ const nextConfig = {
     domains: ['img.ophim.tv'],
     formats: ['image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [64, 96, 128, 256, 384, 500],
+    imageSizes: [64, 96, 128, 256, 384, 400, 500, 600],
   },
 }
 

@@ -1,4 +1,7 @@
-@import './bootstrap.scss';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 // @import './fontanswesome/scss/fontawesome.scss';
 @import './fontanswesome/scss/brands.scss';
 @import './fontanswesome/scss/duotone.scss';
