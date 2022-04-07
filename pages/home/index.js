@@ -17,10 +17,16 @@ const Home = ({ posts }) => {
   return (
     <>
       <button onClick={sendSocket}>sendSocket</button>
-      <Image alt="cong-chua-cua-anh-de-thumb" src="https://img.ophim.tv/uploads/movies/cong-chua-cua-anh-de-thumb.jpg" width="400" height="555" />
       <div className='hahaha'>
         {posts.data.map((d, idx) => (
-          <li key={idx}>{d.id}</li>
+          <Image key={idx}
+            src={`https://img.ophim.tv/uploads/movies/cong-chua-cua-anh-de-thumb.jpg?t=${idx}`}
+            width={1920}
+            height={555}
+            loading='lazy'
+            layout='intrinsic'
+            alt="cong-chua-cua-anh-de-thumb"
+          />
         ))}
       </div>
     </>
