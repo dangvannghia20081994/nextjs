@@ -137,6 +137,9 @@ const nextConfig = {
       },
     ]
   },
+  images: {
+    domains: ['img.ophim.tv'],
+  },
 }
 
 module.exports = withBundleAnalyzer(withPWA(nextConfig))

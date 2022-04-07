@@ -1,6 +1,7 @@
 import AuthLayout from 'layouts/auth'
 import { useSelector, useDispatch } from 'react-redux'
 import { useToken } from 'common/hook'
+import Image from 'next/image'
 const Home = ({ posts }) => {
   const { token } = useToken()
   const dispatch = useDispatch()
@@ -16,6 +17,7 @@ const Home = ({ posts }) => {
   return (
     <>
       <button onClick={sendSocket}>sendSocket</button>
+      <Image alt="cong-chua-cua-anh-de-thumb" src="https://img.ophim.tv/uploads/movies/cong-chua-cua-anh-de-thumb.jpg" width="400" height="555" />
       <div className='hahaha'>
         {posts.data.map((d, idx) => (
           <li key={idx}>{d.id}</li>
