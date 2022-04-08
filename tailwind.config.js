@@ -1,5 +1,6 @@
 module.exports = {
   content: [
+    "./layouts/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
@@ -11,6 +12,7 @@ module.exports = {
       xl: '1440px',
     },
     colors: {
+      'white': '#ffffff',
       'blue': '#1fb6ff',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -20,7 +22,11 @@ module.exports = {
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      'tranparent': 'transparent'
     },
+    // backgroundColor: {
+    //   tranparent: 'transparent'
+    // },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],

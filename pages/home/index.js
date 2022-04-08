@@ -16,13 +16,14 @@ const Home = ({ posts }) => {
     }
   }
   const meta = {
-    title: 'Login',
-    description: 'Page login'
+    title: 'Home',
+    description: 'Page home'
   }
   return (
     <>
       <NextSeo {...meta} />
-      <button className='text-3xl font-bold underline' onClick={sendSocket}><i className="fa-duotone fa-browser"></i> sendSocket</button>
+      <button className='text-3xl font-bold underline' onClick={sendSocket}> sendSocket</button>
+      <i className="fa-duotone fa-browser"></i>
       <div className='hahaha'>
         {posts.data.map((d, idx) => (
           <Image key={idx}

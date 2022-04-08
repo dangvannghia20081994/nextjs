@@ -1,8 +1,5 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
-// @import './fontanswesome/scss/fontawesome.scss';
+@import 'tailwindcss/tailwind';
+@import './fontanswesome/scss/fontawesome.scss';
 @import './fontanswesome/scss/brands.scss';
 @import './fontanswesome/scss/duotone.scss';
 @import './fontanswesome/scss/light.scss';
@@ -13,13 +10,15 @@ html, body {
   scroll-behavior: smooth;
 }
 
-input, button{
+input, button {
   outline: none;
   box-shadow: none;
 }
-button{
-  border:none;
+
+button {
+  border: none;
 }
+
 img, iframe, embed {
   max-width: 100%;
 }
