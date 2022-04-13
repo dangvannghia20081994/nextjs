@@ -10,7 +10,7 @@ const About = ({ posts }) => {
     <>
       <NextSeo {...meta} />
       <div>About</div>
-      {posts.map((it, ind) => (
+      {posts.data.map((it, ind) => (
         <TestComponent key={ind} />
       ))}
     </>
@@ -34,5 +34,5 @@ export async function getServerSideProps(context) {
     }
   }
 }
-About.Layout = AuthLayout
+// About.Layout = AuthLayout
 export default About

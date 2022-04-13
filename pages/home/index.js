@@ -1,60 +1,40 @@
-import AuthLayout from 'layouts/auth'
 import { NextSeo } from 'next-seo'
-import { useSelector, useDispatch } from 'react-redux'
-import { useToken } from 'common/hook'
 import Image from 'next/image'
-const Home = ({ posts }) => {
-  const { token } = useToken()
-  const dispatch = useDispatch()
-  const user = useSelector(state => state.user.user)
-  // console.log(token)
-  // console.log(user)
-  const sendSocket = () => {
-    const socket = window.socket
-    if (socket) {
-      socket.emit('haha', 'haha')
-    }
-  }
+import { StoreProvider } from 'context/store'
+import {getData} from 'utils/request'
+import Test from 'components/test'
+const Home = ({ datas }) => {
   const meta = {
     title: 'Home',
     description: 'Page home'
   }
+  const condition = (item) => {
+    console.log(item)
+  }
   return (
-    <>
+    <StoreProvider>
       <NextSeo {...meta} />
-      <button className='text-3xl font-bold underline' onClick={sendSocket}> sendSocket</button>
-      <i className="fa-duotone fa-browser"></i>
       <div className='hahaha'>
-        {posts.data.map((d, idx) => (
+        {datas.map((it, idx) => (
+          // <Test key={idx} item={it} condition={condition}/>
           <Image key={idx}
-            src={`https://img.ophim.tv/uploads/movies/cong-chua-cua-anh-de-thumb.jpg?t=${idx}`}
+            src={`https://api.catchup.vn/static/images/20220331/2694e8ef-c02f-48ae-a6ac-341d88b52fa8.jpeg?t=${idx}`}
             width={400}
             height={555}
             loading='lazy'
-            layout='intrinsic'
             alt="cong-chua-cua-anh-de-thumb"
           />
         ))}
       </div>
-    </>
+    </StoreProvider>
   )
 }
 
-// Home.Layout = AuthLayout
 export async function getServerSideProps(ctx) {
-  const res = await fetch(`https://api-dev.colearn.vn:8415/v1.0/category/subject`, {
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYTg0NjJhZi1kMDJjLTRhZGItOGI4NC0xZmNhZjZlMjljMWMiLCJpYXQiOjE2NDg3MTg1NzgsImV4cCI6MTY4MDI1NDU3OH0.ed2ajdbwkepQOF55NtDyL2a_Oyx8fGxgBt9DwvAMisimdSOs7YttHzzh5UQjFwD8PfK4gLqxBusIC_G4GknoBQ',
-      'Nghiadv': 'aaaaa'
-    },
-  })
-  const posts = await res.json()
+  const { data: datas } = await getData(`category/subject`)
   return {
     props: {
-      posts
+      datas
     }
   }
 }
