@@ -3,8 +3,8 @@ import axios from 'axios'
 import { getToken, setToken } from 'common/hook/useToken'
 // Create axios instance
 const service = axios.create({
-    baseURL: process.env.NEXT_ENV_PUBLIC_BASE_API,
-    timeout: 10000 // Request timeout
+  baseURL: process.env.NEXT_PUBLIC_BASE_API,
+  timeout: 10000 // Request timeout
 })
 
 // Request intercepter
@@ -46,6 +46,7 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
+// // Reqprofile/user
 const getHeaders = (headers = null, token = null) => {
   if (!headers) {
     headers = {
@@ -58,7 +59,7 @@ const getHeaders = (headers = null, token = null) => {
   return headers
 }
 const getData = (uri = '', token = null, params = {}, headers = null) => {
-  headers = getHeaders(headers,token)
+  headers = getHeaders(headers, token)
   return new Promise(function (resolve, reject) {
     service.get(uri, {
       headers,
