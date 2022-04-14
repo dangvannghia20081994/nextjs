@@ -13,22 +13,23 @@ module.exports = {
     },
     colors: {
       'white': '#ffffff',
-      'blue': '#1fb6ff',
+      'blue': '#4086FF',
       'purple': '#7e5bef',
       'pink': '#ff49db',
       'orange': '#ff7849',
       'green': '#13ce66',
-      'yellow': '#ffc82c',
+      'yellow': '#FFA216',
       'gray-dark': '#273444',
       'gray': '#8492a6',
       'gray-light': '#d3dce6',
+      'body': '#333333',
       'tranparent': 'transparent'
     },
     // backgroundColor: {
     //   tranparent: 'transparent'
     // },
     fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
+      sans: ['Roboto', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
     },
     extend: {
