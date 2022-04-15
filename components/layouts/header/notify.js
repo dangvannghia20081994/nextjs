@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 import InfiniteScroll from 'react-infinite-scroller'
-import Notification from 'assets/icons/header/notify/notify.svg'
+import { ReactComponent as Notification } from 'assets/icons/header/notify/notify.svg'
 import NoAvatar from 'assets/icons/no-avatar.svg'
 import { getData } from '~/utils/request'
 const Notify = () => {
@@ -25,8 +25,8 @@ const Notify = () => {
   }
   return (
     <div className='mr-6 relative py-5 flex group'>
-      <Image src={Notification} loading='lazy' width={20} height={18} alt="notify" className='cursor-pointer' />
-      <div className='list-data absolute top-full right-0 w-52 h-72 overflow-auto bg-white text-body p-3 scrollbar text-sm invisible group-hover:visible'>
+      <Notification className="cursor-pointer" />
+      <div className='list-data absolute top-full right-0 w-64 h-72 overflow-auto rounded-xl border border-opacity-10 border-[#000] bg-white text-body p-3 scrollbar text-sm invisible group-hover:visible'>
         <InfiniteScroll
           pageStart={0}
           loadMore={loadFunc}

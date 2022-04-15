@@ -1,8 +1,7 @@
 import React from 'react'
 import Link from "next/link"
 import { useRouter } from "next/router"
-import Image from 'next/image'
-import Logo from 'assets/icons/header/logo.svg'
+import { ReactComponent as Logo } from 'assets/icons/header/logo.svg'
 import Notify from './notify'
 import Profile from './profile'
 const Header = () => {
@@ -15,12 +14,12 @@ const Header = () => {
   ]
   const router = useRouter()
   return (
-    <div className={`bg-blue text-white sticky top-0 z-50`}>
+    <div className={`bg-blue text-white sticky top-0 z-50 shadow shadow-gray`}>
       <div className="container m-auto">
         <nav className='flex items-center'>
           <Link href="/">
             <a>
-              <Image src={Logo} loading='lazy' width={135} height={41} alt="logo" />
+              <Logo />
             </a>
           </Link>
           <div className='flex ml-14'>
