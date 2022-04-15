@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import Image from 'next/image'
 import Logo from 'assets/icons/header/logo.svg'
 import Notify from './notify'
+import Profile from './profile'
 const Header = () => {
   const listMenu = [
     { url: '/', name: 'Trang chủ' },
@@ -31,8 +32,7 @@ const Header = () => {
           </div>
           <div className='ml-auto flex items-center'>
             <Notify />
-            <span>Lê Khánh An</span>
-            <Image src='https://static.colearn.vn:8413/v1.0/upload/qa/image/11112021/c28dcd67-e6f5-4dca-a6e4-f539cfc36380.jpg' loading='lazy' width={40} height={40} alt="avatar" className='cursor-pointer rounded-full' />
+            <Profile/>
           </div>
         </nav>
       </div>

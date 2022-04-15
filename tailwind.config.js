@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   content: [
     "./layouts/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -13,6 +14,7 @@ module.exports = {
     },
     colors: {
       'white': '#ffffff',
+      'dark': '#000000',
       'blue': '#4086FF',
       'purple': '#7e5bef',
       'pink': '#ff49db',
@@ -33,13 +35,6 @@ module.exports = {
       serif: ['Merriweather', 'serif'],
     },
     extend: {
-      spacing: {
-        '128': '32rem',
-        '144': '36rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
-      },
       aspectRatio: {
         '4/3': '4 / 3',
       },

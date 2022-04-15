@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import InfiniteScroll from 'react-infinite-scroller'
-import Notification from 'assets/icons/header/notify.svg'
+import Notification from 'assets/icons/header/notify/notify.svg'
 import NoAvatar from 'assets/icons/no-avatar.svg'
 import { getData } from '~/utils/request'
 const Notify = () => {
@@ -16,18 +16,17 @@ const Notify = () => {
   const loadFunc = async () => {
     if (!loading) {
       setLoading(prev => !prev)
-      const { data: { listNoti: datas }} = await getData('notify/get-notify-user', null, query)
+      const { data: { listNoti: datas } } = await getData('notify/get-notify-user', null, query)
       setList([...list, ...datas])
       setQuery({ ...query, offset: list.length })
       setMore(query.limit <= datas.length)
       setLoading(prev => !prev)
     }
   }
-  
   return (
     <div className='mr-6 relative py-5 flex group'>
       <Image src={Notification} loading='lazy' width={20} height={18} alt="notify" className='cursor-pointer' />
-      <div className='list-data absolute top-full right-0 w-52 h-72 overflow-auto bg-white text-body p-3 scrollbar text-sm hidden group-hover:block'>
+      <div className='list-data absolute top-full right-0 w-52 h-72 overflow-auto bg-white text-body p-3 scrollbar text-sm invisible group-hover:visible'>
         <InfiniteScroll
           pageStart={0}
           loadMore={loadFunc}
