@@ -9,6 +9,14 @@ module.exports = {
       autorestart: true,
       watch: true,
       // max_memory_restart: '2G',
+      env: {
+        PORT: 3000,
+        NODE_ENV: "development"
+      },
+      env_production: {
+        PORT: 9003,
+        NODE_ENV: "production",
+      }
     }
   ]
 }
