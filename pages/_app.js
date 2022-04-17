@@ -5,6 +5,8 @@ import { Provider as AppProvider } from 'react-redux'
 import store from 'store/index'
 import 'styles/globals.scss'
 
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress

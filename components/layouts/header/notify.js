@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Image from 'next/image'
 import InfiniteScroll from 'react-infinite-scroller'
 import { ReactComponent as Notification } from 'assets/icons/header/notify/notify.svg'
 import NoAvatar from 'assets/icons/no-avatar.svg'
 import { getData } from '~/utils/request'
 const Notify = () => {
+  const user = useSelector(state => state.user.user)
   const [query, setQuery] = useState({
     offset: 0,
     level: 1,
@@ -14,6 +16,7 @@ const Notify = () => {
   const [loading, setLoading] = useState(false)
   const [list, setList] = useState([])
   const loadFunc = async () => {
+    if (!user) { return }
     if (!loading) {
       setLoading(prev => !prev)
       const { data: { listNoti: datas } } = await getData('notify/get-notify-user', null, query)
