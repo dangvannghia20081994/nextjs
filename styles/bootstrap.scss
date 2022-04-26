@@ -26,12 +26,12 @@ $link-hover-decoration:                   none;
 $paragraph-margin-bottom:                 0;
 // Typography
 $font-family-sans-serif: 'Roboto', sans-serif;
-$font-size-base: 0.9rem;
+$font-size-base: 1;
 $enable-responsive-font-sizes: true;
 
 // Body color
 $body-bg: #f8fafc;
-$body-color: #111;
+$body-color: #333333;
 
 // Colors
 $blue: #4086ff;
@@ -50,5 +50,8 @@ $custom-file-text: (
   en: "Browse",
   vi: "Chọn file"
 );
-$enable-smooth-scroll: true;
+$enable-gradients: true;
+
+$border-color: #ebebeb;
+
 @import 'bootstrap/scss/bootstrap.scss';

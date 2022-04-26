@@ -1,23 +1,23 @@
-import NavLink from 'components/link'
+import Link from "next/link"
 const Default = ({ children }) => {
   return (
     <div>
       <nav>
-        <NavLink href="/login">
+        <Link href="/login">
           <a>Login</a>
-        </NavLink>{' '}
+        </Link>{' '}
         |
-        <NavLink href="/">
+        <Link href="/">
           <a>Home</a>
-        </NavLink>{' '}
+        </Link>{' '}
         |
-        <NavLink href="/about">
+        <Link href="/about">
           <a>About</a>
-        </NavLink>{' '}
+        </Link>{' '}
         |
-        <NavLink href="/contact">
+        <Link href="/contact">
           <a>Contact</a>
-        </NavLink>
+        </Link>
       </nav>
       {children}
       <footer>{'I`m here to stay'}</footer>

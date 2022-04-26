@@ -9,8 +9,34 @@
     font-size: 50px;
   }
 }
+.title{
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  @media (max-width:576px) {
+    font-size: 24px;
+  }
+}
 .formInput{
+  border-bottom: 2px solid rgba(255,255,255,0.24);
+  margin-bottom: 30px;
   input{
+    color: #fff;
+    width: 100%;
+    background: 0 0;
+    border:none;
+    padding: 0 5px 0 35px;
+    font-size: 16px;
+    height: 45px;
+    @media (max-width:576px) {
+      padding: 0 5px 0 35px;
+      font-size: 14px;
+      height: 40px;
+    }
+    &::placeholder{
+      color: #fff;
+    }
     &:focus{
       padding-left: 5px;
       border-color: transparent;
@@ -29,6 +55,12 @@
     }
   }
   .label{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
     --content: '\f007';
     &.email{
       --content: '\f0e0';
@@ -69,10 +101,20 @@
   }
 }
 .action{
+  color: #555555;
+  font-size: 16px;
+  border-radius: 25px;
+  background: #9152f8;
   background: linear-gradient(to left, #7579ff, #b224ef);
+  transition: all 0.4s;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
   padding: 15px 20px;
+  min-width: 120px;
   @media (max-width:576px) {
     padding: 10px 15px;
+    min-width: 120px;
   }
   &::before{
     content: "";
@@ -95,6 +137,10 @@
   }
 }
 .forgot{
+  margin-top: 50px;
+  @media (max-width:576px) {
+    margin-top: 30px;
+  }
   a{
     font-size: 13px;
     color: #e5e5e5;

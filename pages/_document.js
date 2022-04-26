@@ -7,7 +7,7 @@ export default function Document() {
         <link rel="apple-touch-icon" href="/vercel.svg"></link>
         <meta name="theme-color" content="#fff" />
       </Head>
-      <body>
+      <body className='scrollbar min-vh-100'>
         <Main />
         <NextScript />
       </body>

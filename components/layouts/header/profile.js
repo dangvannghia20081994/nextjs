@@ -17,19 +17,19 @@ const Notify = () => {
     { url: '/', icon: Logout, name: 'Đăng xuất'},
   ]
   return (
-    <div className='mr-6 relative py-2 flex group items-center'>
-      <span className='user-name mr-2 max-w-[120px] truncate'>Lê Khánh An</span>
-      <Image src='https://static.colearn.vn:8413/v1.0/upload/qa/image/11112021/c28dcd67-e6f5-4dca-a6e4-f539cfc36380.jpg' loading='lazy' width={40} height={40} alt="avatar" className='cursor-pointer rounded-full' />
-      <div className='list-data absolute top-full right-0 w-52 rounded-xl border border-opacity-10 border-[#000] bg-white text-body px-3 py-1 invisible group-hover:visible'>
+    <div className='me-5 position-relative py-2 d-flex group align-items-center'>
+      <span className='user-name me-2 text-truncate'>Lê Khánh An</span>
+      <Image src='https://static.colearn.vn:8413/v1.0/upload/qa/image/11112021/c28dcd67-e6f5-4dca-a6e4-f539cfc36380.jpg' loading='lazy' width={40} height={40} alt="avatar" className='pointer rounded-circle' />
+      <div className='list-data position-absolute top-100 right-0 rounded-2 border bg-white text-body px-3 py-1'>
         {
           routes.map((route, ind) => (
             <Link key={ind} href={route.url}>
               <a>
-                <div className='item py-1 flex items-center'>
-                  <div className="flex-none w-7 h-7 mr-1">
-                    <route.icon/>
+                <div className='item py-2 d-flex align-items-center'>
+                  <div className="icon text-center me-2">
+                    <route.icon width="20" height="20"/>
                   </div>
-                  <div className="grow">
+                  <div className="flex-grow-1">
                     {route.name}
                   </div>
                 </div>
@@ -38,6 +38,22 @@ const Notify = () => {
           ))
         }
       </div>
+      <style jsx>{`
+        .group .user-name{
+          max-width:120px;
+        }
+        .group:hover .list-data{
+          display:block;
+        }
+        .group .list-data{
+          display: none;
+          min-width: 200px;
+          max-width: 100%;
+        }
+        .group .list-data .item .icon{
+          width: 26px;
+        }
+      `}</style>
     </div>
   )
 }

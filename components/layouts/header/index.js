@@ -14,7 +14,7 @@ const Header = () => {
   ]
   const router = useRouter()
   return (
-    <div className={`bg-primary text-white position-sticky top-0 shadow`} style={{ zIndex:50 }}>
+    <div className={`bg-primary text-white sticky-top shadow`}>
       <div className="container">
         <nav className='d-flex align-items-center'>
           <Link href="/">
@@ -22,19 +22,25 @@ const Header = () => {
               <Logo />
             </a>
           </Link>
-          <div className='d-flex ms-4'>
+          <div className='d-flex ms-4 list-menu'>
             {listMenu.map((it, ind) => (
               <Link key={ind} href={it.url}>
-                <a className={`p-3 ${router.asPath === it.url ? "bg-warning" : ""}`}>{ it.name }</a>
+                <a className={`item ${router.asPath === it.url ? "bg-warning" : ""}`}>{ it.name }</a>
               </Link>
             ))}
           </div>
-          <div className='ml-auto d-flex align-items-center'>
+          <div className='ms-auto d-flex align-items-center'>
             <Notify />
-            {/* <Profile/> */}
+            <Profile/>
           </div>
         </nav>
       </div>
+      <style jsx>{`
+        .list-menu .item{
+          padding:1.5rem 1.25rem 1rem;
+        }
+      `}
+      </style>
     </div>
   )
 }
