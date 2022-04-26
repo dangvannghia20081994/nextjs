@@ -8,7 +8,8 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 992px,
-  xl: 1200px
+  xl: 1366px,
+  xxl: 1450px,
 );
 $container-max-widths: (
   xs: 540px,
@@ -16,6 +17,7 @@ $container-max-widths: (
   md: 750px,
   lg: 970px,
   xl: 1170px,
+  xxl: 1380px,
 );
 $link-color:                              unset;
 $link-decoration:                         none;
@@ -32,14 +34,14 @@ $body-bg: #f8fafc;
 $body-color: #111;
 
 // Colors
-$blue: #3490dc;
+$blue: #4086ff;
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
-$red: #e3342f;
+$red: #f83939;
 $orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
+$yellow: #FFA216;
+$green: #73bf44;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 

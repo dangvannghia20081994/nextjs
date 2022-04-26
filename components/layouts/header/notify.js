@@ -24,9 +24,9 @@ const Notify = () => {
     }
   }
   return (
-    <div className='mr-6 relative py-5 flex group'>
+    <div className='me-5 position-relative py-5 d-flex group'>
       <Notification className="cursor-pointer" />
-      <div className='list-data absolute top-full right-0 w-64 h-72 overflow-auto rounded-xl border border-opacity-10 border-[#000] bg-white text-body p-3 scrollbar text-sm invisible group-hover:visible'>
+      <div className='list-data position-absolute right-0 overflow-auto rounded-1 border bg-white text-body p-3 scrollbar'>
         <InfiniteScroll
           pageStart={0}
           loadMore={loadFunc}
@@ -34,8 +34,8 @@ const Notify = () => {
           loader={<div className="loader" key={0}>Đang tải dữ liệu ...</div>}
           useWindow={false}>
           {list.map((it, ind) => (
-            <div key={ind} className="flex border-b pb-1 mb-1 border-b-body border-opacity-40 last:border-b-0">
-              <div className='shrink-0 w-8 mr-1'>
+            <div key={ind} className="d-flex border-bottom pb-1 mb-1">
+              <div className='shrink-0 mr-1'>
                 <Image src={it.avatar || NoAvatar} loading='lazy' width={30} height={30} alt="avatar" />
               </div>
               <div>{it.text}</div>
@@ -43,7 +43,15 @@ const Notify = () => {
           ))}
         </InfiniteScroll>
       </div>
+      <style jsx>{`
+        .list-data {
+          min-width: 250px;
+          max-width: 100%;
+          max-height: 300px;
+        }`
+      }</style>
     </div>
   )
 }
+
 export default Notify

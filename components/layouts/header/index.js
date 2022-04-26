@@ -14,24 +14,24 @@ const Header = () => {
   ]
   const router = useRouter()
   return (
-    <div className={`bg-blue text-white sticky top-0 z-50 shadow shadow-gray`}>
-      <div className="container m-auto">
-        <nav className='flex items-center'>
+    <div className={`bg-primary text-white position-sticky top-0 shadow`} style={{ zIndex:50 }}>
+      <div className="container">
+        <nav className='d-flex align-items-center'>
           <Link href="/">
             <a>
               <Logo />
             </a>
           </Link>
-          <div className='flex ml-14'>
+          <div className='d-flex ms-4'>
             {listMenu.map((it, ind) => (
               <Link key={ind} href={it.url}>
-                <a className={`p-5 ${router.asPath === it.url ? "bg-yellow" : ""}`}>{ it.name }</a>
+                <a className={`p-3 ${router.asPath === it.url ? "bg-warning" : ""}`}>{ it.name }</a>
               </Link>
             ))}
           </div>
-          <div className='ml-auto flex items-center'>
+          <div className='ml-auto d-flex align-items-center'>
             <Notify />
-            <Profile/>
+            {/* <Profile/> */}
           </div>
         </nav>
       </div>
