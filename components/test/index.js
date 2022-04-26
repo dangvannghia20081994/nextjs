@@ -1,9 +1,10 @@
-import React from 'react'
-
-const index = () => {
+const Test = ({ item, condition, ...rest }) => {
   return (
-    <div>index</div>
+    item && <div>
+      {item.name}
+      <button onClick={() => condition(item)}>Click</button>
+    </div>
   )
 }
 
-export default index
+export default Test

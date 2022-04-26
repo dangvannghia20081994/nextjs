@@ -1,4 +1,8 @@
-import {useSocket} from 'common/hook'
+import { useRouter } from 'next/router'
+import { useSocket, useToken } from 'common/hook'
+import { useSelector, useDispatch } from 'react-redux'
+import { setUser } from 'store'
+import { getData } from '../utils/request'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
 // https://colorlib.com/wp/html5-and-css3-login-forms/
@@ -6,6 +10,24 @@ import { useEffect } from 'react'
 // https://colorlib.com/etc/lf/Login_v3/index.html
 const Default = ({ children }) => {
   const socket = useSocket('http://localhost:8080/auth')
+  const router = useRouter()
+  const { token } = useToken()
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.user)
+  useEffect(() => {
+    if (!user) {
+      if (token) {
+        getData('profile/user', token)
+          .then(user => {
+            dispatch(setUser(user.data))
+            router.push('/')
+          })
+      }
+    } else {
+      router.push('/')
+    }
+  }, [])
+
   useEffect(() => {
     if (socket) {
       window.socket = socket
@@ -18,9 +40,9 @@ const Default = ({ children }) => {
     }
   }, [socket])
   return (
-    <div className={`${styles.auth} d-flex min-vh-100 w-100 p-3 justify-content-center align-items-center position-relative flex-wrap`}>
-      <div className={`${styles.wapper} overflow-hidden`}>
-        <div className={`w-100`}>
+    <div className={`${styles.auth} flex min-h-screen w-full p-3 justify-center items-center relative flex-wrap bg-[url('/auth-bg.jpg')] bg-cover bg-center bg-no-repeat z-10`}>
+      <div className={`${styles.wapper} overflow-hidden sm:w-96 md:w-128`}>
+        <div className="w-full">
           {children}
         </div>
       </div>

@@ -23,7 +23,7 @@ io.use(function (socket, next) {
   return next()
 })
 io.of('/auth').on('connection', (socket) => {
-  console.log(`Auth client with ID of ${socket.id} connected!`)
+  console.log(`Connection with ID ${socket.id}!`)
   socket.on('join-room', (room) => {
     socket.join(room);
     // const rooms = socket.adapter.rooms;
@@ -31,6 +31,9 @@ io.of('/auth').on('connection', (socket) => {
   })
   socket.on('leave-room', (room) => {
     socket.leave(room);
+  })
+  socket.on('disconnect', () => {
+    console.log(`Disconnect with ID ${socket.id}!`)
   })
 })
 io.of('/app').on('connection', (socket) => {
