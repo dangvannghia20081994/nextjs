@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie'
-const access_token = 'access_token'
+export const access_token = 'access_token'
 const getToken = () => {
   return Cookie.get(access_token) || null
 }

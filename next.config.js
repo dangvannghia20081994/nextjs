@@ -138,7 +138,7 @@ const nextConfig = {
     ]
   },
   images: {
-    domains: ['img.ophim.tv', 'api.catchup.vn', 'static.colearn.vn'],
+    domains: ['img.ophim.tv', 'api.catchup.vn', 'api-dev.colearn.vn', 'static.colearn.vn'],
     formats: ['image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [64, 96, 128, 256, 384, 400, 500, 600],

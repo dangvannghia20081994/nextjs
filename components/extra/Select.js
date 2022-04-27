@@ -1,11 +1,13 @@
 import { Dropdown } from "react-bootstrap"
 import Caret from '~/assets/icons/select/caret-black.svg'
-const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null, handerSelect }) => {
+const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null, handerSelect, className = '', id }) => {
   let actived = list.find(it => it.id === selected)
-  const id = 'custom-select-' + Math.floor(Math.random() * 100000)
+  if (!id) {
+    id = 'custom-select-' + Math.floor(Math.random() * 100000)
+  }
   return (
     <>
-      <Dropdown className="custom-select">
+      <Dropdown className={`custom-select d-inline-block ${className}`}>
         <Dropdown.Toggle className="shadow-none border text-start position-relative pe-4" variant="white" id={id}>
           {selected === null ? placeholder : (actived?.label)}
         </Dropdown.Toggle>
@@ -17,7 +19,7 @@ const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null,
       </Dropdown>
       <style jsx global>{`
         .custom-select .dropdown-toggle{
-          width:120px;
+          min-width:120px;
         }
         .custom-select .dropdown-toggle:after{
           content: url(${Caret});

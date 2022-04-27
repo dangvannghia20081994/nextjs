@@ -1,12 +1,16 @@
+import dynamic from 'next/dynamic'
 import { NextSeo } from 'next-seo'
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import { StoreProvider } from 'context/store'
 import { getData } from 'utils/request'
 import { Select } from '~/components/extra'
+import styles from './Home.module.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+
+import { ReactComponent as AddQuestion } from '~/assets/icons/home/question/add.svg'
 
 const Question = () => {
   const [selected, setSelected] = useState(null)
@@ -15,8 +19,24 @@ const Question = () => {
     setSelected(it.id)
   }, [])
   return (
-    <div className='container'>
-      <Select list={list} handerSelect={handerSelect} selected={selected} />
+    <div className='bg-white py-4'>
+      <div className='container'>
+        <div className={`${styles.title} text-center text-uppercase fw-bold position-relative`}>Hỏi bài</div>
+        <div className={`${styles.form} pt-4`}>
+          <div className="row">
+            <div className="col-lg-7 d-none d-lg-block">
+              <Select id="custom-select-class" list={list} placeholder="Chọn lớp" handerSelect={handerSelect} selected={selected} className="me-1"/>
+              <Select id="custom-select-subject" list={list} placeholder="Chọn môn" handerSelect={handerSelect} selected={selected} />
+              <Select id="custom-select-status" list={list} placeholder="Trạng thái câu hỏi" handerSelect={handerSelect} selected={selected} className="float-end"/>
+            </div>
+            <div className='col-lg-5'>
+              <button className="btn-add-question d-flex align-items-center">
+                <AddQuestion className="me-2" />Đặt câu hỏi
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -27,11 +47,12 @@ const Home = ({ datas }) => {
     description: 'Trang chủ'
   }
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true
   };
   return (
     <StoreProvider>

@@ -21,8 +21,8 @@ const Profile = () => {
   ]
   return (
     <div className='position-relative py-2 d-flex group align-items-center'>
-      <span className='user-name me-2 text-truncate'>Lê Khánh An</span>
-      <Image src={NoAvatar || user.avatar || NoAvatar} objectFit='cover' loading='lazy' width={40} height={40} alt="avatar" className='pointer rounded-circle' />
+      <span className='user-name me-2 text-truncate pointer'>{ user.fullName }</span>
+      <Image src={ user.avatar || NoAvatar} objectFit='cover' loading='lazy' width={40} height={40} alt="avatar" className='pointer rounded-circle' />
       <div className='list-data position-absolute top-100 mw-100 end-0 rounded-2 border bg-white text-body px-3 py-1'>
         {
           routes.map((route, ind) => (

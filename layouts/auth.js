@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useSocket, useToken } from 'common/hook'
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser } from 'store'
+import { setUser, setClasses, setSubjects } from 'store'
 import { getData } from '~/utils/request'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
@@ -14,17 +14,29 @@ const Default = ({ children }) => {
   const { token } = useToken()
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
-  if (!user) {
-    if (token) {
-      getData('profile/user', {}, token)
-        .then(user => {
-          dispatch(setUser(user.data))
-          router.push('/')
-        })
-    }
-  } else {
+  if (user) {
     router.push('/')
   }
+  useEffect(() => {
+    if (!user) {
+      if (token) {
+        getData('profile/user', {}, token)
+          .then(user => {
+            dispatch(setUser(user.data))
+            router.push('/')
+          })
+      }
+    }
+    getData('category/class')
+      .then(({ data }) => {
+        dispatch(setClasses(data))
+      })
+    getData('category/subject')
+      .then(({ data }) => {
+        dispatch(setSubjects(data))
+      })
+  }, [])
+  
   useEffect(() => {
     if (socket) {
       window.socket = socket

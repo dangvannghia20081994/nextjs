@@ -1,9 +1,9 @@
-import Default from 'layouts/default'
+import Default from '~/layouts/default'
 import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { Provider as AppProvider } from 'react-redux'
-import store from 'store/index'
-import 'styles/globals.scss'
+import store from '~/store'
+import '~/styles/globals.scss'
 
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
@@ -13,16 +13,18 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
-
-
-export default function MyApp({ Component, pageProps }) {
+import { SSRProvider } from '@react-aria/ssr';
+const MyApp = ({ Component, pageProps }) => {
   const Layout = Component.Layout || Default
   return (
-    <AppProvider store={store}>
-      <Layout>
-        <DefaultSeo {...SEO} />
-        <Component {...pageProps} />
-      </Layout>
-    </AppProvider>
+    <SSRProvider>
+      <AppProvider store={store}>
+        <Layout>
+          <DefaultSeo {...SEO} />
+          <Component {...pageProps} />
+        </Layout>
+      </AppProvider>
+    </SSRProvider>
   )
 }
+export default MyApp

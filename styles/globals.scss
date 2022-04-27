@@ -37,3 +37,8 @@ img, iframe, embed {
 .white-space-break{
   white-space: break-spaces;
 }
+.position-center{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
