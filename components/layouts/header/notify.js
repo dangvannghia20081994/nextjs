@@ -57,7 +57,7 @@ const Notify = () => {
   return (
     <div className='me-4 position-relative py-3 d-flex notify'>
       <Notification className="pointer" />
-      <div className='list-data position-absolute top-100 end-0 overflow-auto rounded-1 border bg-white text-body p-3 scrollbar'>
+      <div className='list-data position-absolute top-100 mw-100 end-0 overflow-auto rounded-1 border bg-white text-body p-3 scrollbar'>
         <InfiniteScroll
           pageStart={0}
           loadMore={loadFunc}
@@ -80,7 +80,6 @@ const Notify = () => {
         .notify .list-data {
           display: none;
           min-width: 250px;
-          max-width: 100%;
           max-height: 300px;
         }`
       }</style>

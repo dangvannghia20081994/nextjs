@@ -24,14 +24,13 @@ const BackToTop = () => {
   
   return (
     <>
-      <div onClick={handerScrollToTop} className={`fixed-bottom back-to-top bg-warning text-white d-flex align-items-center justify-content-center pointer ${ status }`}>
+      <div onClick={handerScrollToTop} className={`start-auto fixed-bottom back-to-top bg-warning text-white d-flex align-items-center justify-content-center pointer ${ status }`}>
         <Icon />
       </div>
       <style jsx>{`
         .back-to-top{
           bottom: 30px;
           right: 80px;
-          left: auto;
           border-radius: 10px;
           width: 36px;
           height: 36px;

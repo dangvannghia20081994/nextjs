@@ -53,5 +53,13 @@ $custom-file-text: (
 $enable-gradients: true;
 
 $border-color: #ebebeb;
+$position-values: (
+  'auto': auto,
+  0: 0,
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+);
 
 @import 'bootstrap/scss/bootstrap.scss';

@@ -14,20 +14,17 @@ const Default = ({ children }) => {
   const { token } = useToken()
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
-  useEffect(() => {
-    if (!user) {
-      if (token) {
-        getData('profile/user', {}, token)
-          .then(user => {
-            dispatch(setUser(user.data))
-            router.push('/')
-          })
-      }
-    } else {
-      router.push('/')
+  if (!user) {
+    if (token) {
+      getData('profile/user', {}, token)
+        .then(user => {
+          dispatch(setUser(user.data))
+          router.push('/')
+        })
     }
-  }, [])
-
+  } else {
+    router.push('/')
+  }
   useEffect(() => {
     if (socket) {
       window.socket = socket

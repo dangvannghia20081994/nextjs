@@ -1,0 +1,36 @@
+import { Dropdown } from "react-bootstrap"
+import Caret from '~/assets/icons/select/caret-black.svg'
+const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null, handerSelect }) => {
+  let actived = list.find(it => it.id === selected)
+  const id = 'custom-select-' + Math.floor(Math.random() * 100000)
+  return (
+    <>
+      <Dropdown className="custom-select">
+        <Dropdown.Toggle className="shadow-none border text-start position-relative pe-4" variant="white" id={id}>
+          {selected === null ? placeholder : (actived?.label)}
+        </Dropdown.Toggle>
+        <Dropdown.Menu className="rounded-3">
+          {list.map((it, ind) => (
+            <Dropdown.Item key={ind} onClick={() => handerSelect(it)}>{it.label}</Dropdown.Item>
+          ))}
+        </Dropdown.Menu>
+      </Dropdown>
+      <style jsx global>{`
+        .custom-select .dropdown-toggle{
+          width:120px;
+        }
+        .custom-select .dropdown-toggle:after{
+          content: url(${Caret});
+          border:0;
+          position: absolute;
+          margin-left: 0;
+          vertical-align: unset;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      `}</style>
+    </>
+  )
+}
+export default Select
