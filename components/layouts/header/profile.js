@@ -7,7 +7,7 @@ import { ReactComponent as Library } from 'assets/icons/header/profile/library.s
 import { ReactComponent as UserInfo } from 'assets/icons/header/profile/user-info.svg'
 import { ReactComponent as Payment } from 'assets/icons/header/profile/payment.svg'
 import { ReactComponent as Logout } from 'assets/icons/header/profile/logout.svg'
-const Notify = () => {
+const Profile = () => {
   const routes = [
     { url: '/', icon: Question, name: 'Hỏi bài của tôi'},
     { url: '/', icon: ClassRoom, name: 'Lớp học của tôi'},
@@ -57,4 +57,4 @@ const Notify = () => {
     </div>
   )
 }
-export default Notify
+export default Profile

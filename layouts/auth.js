@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useSocket, useToken } from 'common/hook'
 import { useSelector, useDispatch } from 'react-redux'
 import { setUser } from 'store'
-import { getData } from '../utils/request'
+import { getData } from '~/utils/request'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
 // https://colorlib.com/wp/html5-and-css3-login-forms/
@@ -17,7 +17,7 @@ const Default = ({ children }) => {
   useEffect(() => {
     if (!user) {
       if (token) {
-        getData('profile/user', token)
+        getData('profile/user', {}, token)
           .then(user => {
             dispatch(setUser(user.data))
             router.push('/')

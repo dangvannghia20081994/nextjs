@@ -46,7 +46,7 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-// // Reqprofile/user
+// Req profile/user
 const getHeaders = (headers = null, token = null) => {
   if (!headers) {
     headers = {
@@ -58,7 +58,7 @@ const getHeaders = (headers = null, token = null) => {
   }
   return headers
 }
-const getData = (uri = '', token = null, params = {}, headers = null) => {
+const getData = (uri = '', params = {}, token = null, headers = null) => {
   headers = getHeaders(headers, token)
   return new Promise(function (resolve, reject) {
     service.get(uri, {
