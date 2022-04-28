@@ -3,8 +3,8 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import InfiniteScroll from 'react-infinite-scroller'
-import { ReactComponent as Notification } from 'assets/icons/header/notify/notify.svg'
-import NoAvatar from 'assets/icons/no-avatar.svg'
+import { ReactComponent as Notification } from '~/assets/icons/header/notify/notify.svg'
+import NoAvatar from '~/assets/icons/no-avatar.svg'
 import { getData } from '~/utils/request'
 const Item = ({ item, className}) => {
   return (

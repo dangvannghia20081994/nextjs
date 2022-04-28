@@ -2,12 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import Link from "next/link"
 import { useSelector } from 'react-redux'
-import { ReactComponent as Question } from 'assets/icons/header/profile/question.svg'
-import { ReactComponent as ClassRoom } from 'assets/icons/header/profile/class.svg'
-import { ReactComponent as Library } from 'assets/icons/header/profile/library.svg'
-import { ReactComponent as UserInfo } from 'assets/icons/header/profile/user-info.svg'
-import { ReactComponent as Payment } from 'assets/icons/header/profile/payment.svg'
-import { ReactComponent as Logout } from 'assets/icons/header/profile/logout.svg'
+import { ReactComponent as Question } from '~/assets/icons/header/profile/question.svg'
+import { ReactComponent as ClassRoom } from '~/assets/icons/header/profile/class.svg'
+import { ReactComponent as Library } from '~/assets/icons/header/profile/library.svg'
+import { ReactComponent as UserInfo } from '~/assets/icons/header/profile/user-info.svg'
+import { ReactComponent as Payment } from '~/assets/icons/header/profile/payment.svg'
+import { ReactComponent as Logout } from '~/assets/icons/header/profile/logout.svg'
 import NoAvatar from '~/assets/icons/no-avatar.svg'
 const Profile = () => {
   const user = useSelector(state => state.user.user)

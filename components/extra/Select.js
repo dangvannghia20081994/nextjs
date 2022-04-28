@@ -11,7 +11,7 @@ const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null,
         <Dropdown.Toggle className="border-0 text-start position-relative" variant="white" id={id}>
           {selected === null ? placeholder : (actived?.label)}
         </Dropdown.Toggle>
-        <Dropdown.Menu className="rounded-3">
+        <Dropdown.Menu className="rounded-2">
           {list.map((it, ind) => (
             <Dropdown.Item key={ind} onClick={() => handerSelect(it)}>{it.label}</Dropdown.Item>
           ))}

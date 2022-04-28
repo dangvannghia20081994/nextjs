@@ -2,7 +2,7 @@ import React from 'react'
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useSelector } from 'react-redux'
-import { ReactComponent as Logo } from 'assets/icons/header/logo.svg'
+import { ReactComponent as Logo } from '~/assets/icons/header/logo.svg'
 import Notify from './notify'
 import Profile from './profile'
 const Header = () => {
