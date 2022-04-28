@@ -27,7 +27,7 @@ const Header = () => {
           <div className='d-flex ms-4 list-menu'>
             {listMenu.map((it, ind) => (
               <Link key={ind} href={it.url}>
-                <a className={`item ${router.asPath === it.url ? "bg-warning" : ""}`}>{ it.name }</a>
+                <a className={`item ${router.asPath === it.url ? "bg-warning fw-bold" : ""}`}>{ it.name }</a>
               </Link>
             ))}
           </div>

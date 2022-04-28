@@ -13,7 +13,7 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
-import { SSRProvider } from '@react-aria/ssr';
+import SSRProvider from 'react-bootstrap/SSRProvider';
 const MyApp = ({ Component, pageProps }) => {
   const Layout = Component.Layout || Default
   return (

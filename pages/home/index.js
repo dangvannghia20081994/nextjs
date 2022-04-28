@@ -12,6 +12,7 @@ import Slider from "react-slick";
 
 import { ReactComponent as AddQuestion } from '~/assets/icons/home/question/add.svg'
 
+import QuestionItem from '~/components/question/Home'
 const Question = () => {
   const [selected, setSelected] = useState(null)
   const list = Array(5).fill(0).map((it, ind) => ({ label: 'label ' + ind, id: ind }))
@@ -19,24 +20,38 @@ const Question = () => {
     setSelected(it.id)
   }, [])
   return (
-    <div className='bg-white py-4'>
+    <div className='bg-light py-4'>
       <div className='container'>
         <div className={`${styles.title} text-center text-uppercase fw-bold position-relative`}>Hỏi bài</div>
-        <div className={`${styles.form} pt-4`}>
-          <div className="row">
+        <div className={`${styles.form} mt-4 bg-white py-4 px-3 shadow-sm rounded-3`}>
+          <div className="row gy-4">
             <div className="col-lg-7 d-none d-lg-block">
-              <Select id="custom-select-class" list={list} placeholder="Chọn lớp" handerSelect={handerSelect} selected={selected} className="me-1"/>
-              <Select id="custom-select-subject" list={list} placeholder="Chọn môn" handerSelect={handerSelect} selected={selected} />
-              <Select id="custom-select-status" list={list} placeholder="Trạng thái câu hỏi" handerSelect={handerSelect} selected={selected} className="float-end"/>
+              <Select id="custom-select-class" list={list} placeholder="Chọn lớp" handerSelect={handerSelect} selected={selected} className={`select-home me-2`}/>
+              <Select id="custom-select-subject" list={list} placeholder="Chọn môn" handerSelect={handerSelect} selected={selected} className={`select-home`}/>
+              <Select id="custom-select-status" list={list} placeholder="Trạng thái câu hỏi" handerSelect={handerSelect} selected={selected} className={`select-home float-end`}/>
             </div>
             <div className='col-lg-5'>
-              <button className="btn-add-question d-flex align-items-center">
+              <button className={`${styles.addQuestion} d-flex align-items-center bg-gradient py-2 px-4 text-white fw-bold`}>
                 <AddQuestion className="me-2" />Đặt câu hỏi
               </button>
             </div>
+            <div className="col-lg-7">
+              <div className={`${styles.listQuestion} border shadow-sm rounded-3`}>
+                {Array(5).fill(1).map((it, ind) => (
+                  <QuestionItem key={ind}/>
+                ))}
+              </div>
+            </div>
+            <div className='col-lg-5'></div>
           </div>
         </div>
       </div>
+      <style jsx global>{`
+        .select-home .dropdown-toggle{
+          border-radius: 34.5px;
+          background-color: var(--bs-light) ;
+        }
+      `}</style>
     </div>
   )
 }

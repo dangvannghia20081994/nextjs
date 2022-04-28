@@ -8,7 +8,7 @@ const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null,
   return (
     <>
       <Dropdown className={`custom-select d-inline-block ${className}`}>
-        <Dropdown.Toggle className="shadow-none border text-start position-relative pe-4" variant="white" id={id}>
+        <Dropdown.Toggle className="border-0 text-start position-relative" variant="white" id={id}>
           {selected === null ? placeholder : (actived?.label)}
         </Dropdown.Toggle>
         <Dropdown.Menu className="rounded-3">
@@ -20,6 +20,9 @@ const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null,
       <style jsx global>{`
         .custom-select .dropdown-toggle{
           min-width:120px;
+          box-shadow: 0px 2px 4px rgb(202 202 202 / 34%);
+          border-radius: 6px;
+          padding: 12px 30px 12px 11px;
         }
         .custom-select .dropdown-toggle:after{
           content: url(${Caret});
