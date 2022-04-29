@@ -19,9 +19,9 @@ $container-max-widths: (
   xl: 1170px,
   xxl: 1380px,
 );
-$link-color:                              inherit;
+$link-color:                              unset;
 $link-decoration:                         none;
-$link-hover-color:                        initial;
+$link-hover-color:                        unset;
 $link-hover-decoration:                   none;
 $paragraph-margin-bottom:                 0;
 // Typography
@@ -41,13 +41,13 @@ $pink: #f66d9b;
 $red: #f83939;
 $orange: #f6993f;
 $yellow: #FFA216;
-$green: #73bf44;
+$green: #27AE60;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
 $primary:       #4086ff;
 $secondary:     #B1B1B1;
-$success:       #73bf44;
+$success:       #27AE60;
 $info:          #6cb2eb ;
 $warning:       #FFA216;
 $danger:        #f83939;
@@ -65,7 +65,9 @@ $enable-gradients: true;
 $border-color: #ebebeb;
 $border-radius-sm:   .3rem;
 $border-radius:      .5rem;
-$border-radius-lg :  1rem;
+$border-radius-lg:   1rem;
+$border-radius-xl:   1.5rem;
+$border-radius-pill: 50rem;
 $position-values: (
   'auto': auto,
   0: 0,
@@ -82,12 +84,28 @@ $h4-font-size:                1.125rem;
 $h5-font-size:                .875rem;
 $h6-font-size:                .75rem;
 
+$zindex-sticky:               1000;
+$zindex-dropdown:             $zindex-sticky + 1;
 
 $utilities: (
   "border-style": (
     property: border-style,
     class: border,
     values: dashed dotted solid
+  ),
+  "rounded": (
+    property: border-radius,
+    class: rounded,
+    values: (
+      null: $border-radius,
+      0: 0,
+      1: $border-radius-sm,
+      2: $border-radius,
+      3: $border-radius-lg,
+      4: $border-radius-xl,
+      circle: 50%,
+      pill: $border-radius-pill
+    )
   ),
 );
 @import 'bootstrap/scss/bootstrap.scss';

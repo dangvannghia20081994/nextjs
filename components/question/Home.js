@@ -12,7 +12,7 @@ const Home = () => {
         <div className='flex-grow-1 ms-3 position-relative'>
           <div className='user-name fw-bold display-html'>Nguyễn Anh Quân</div>
           <div className='text-mute small text-secondary'>5 phút trước</div>
-          <span className='class-info position-absolute bg-warning text-warning py-2 px-3 lh-1 top-0 end-0'>
+          <span className='class-info position-absolute bg-warning text-warning py-2 px-3 lh-1 top-0 end-0 rounded-4'>
             Lớp 12 &#8226; Vật lý
           </span>
         </div> 
@@ -42,7 +42,6 @@ const Home = () => {
       <style jsx>{`
         .class-info{
           --bs-bg-opacity: .1;
-          border-radius: 20px;
         }
         .content{
           --line: 4;

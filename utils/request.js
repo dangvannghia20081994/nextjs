@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { getToken, setToken } from 'common/hook/useToken'
+import { getToken, setToken } from '~/common/hook/useToken'
 // Create axios instance
 const service = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_API,

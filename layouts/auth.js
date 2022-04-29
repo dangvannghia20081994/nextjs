@@ -1,8 +1,6 @@
 import { useRouter } from 'next/router'
-import { useSocket, useToken } from 'common/hook'
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser, setClasses, setSubjects } from 'store'
-import { getData } from '~/utils/request'
+import { useSocket } from '~/common/hook'
+import { useSelector } from 'react-redux'
 import styles from './auth.module.scss'
 import { useEffect } from 'react'
 // https://colorlib.com/wp/html5-and-css3-login-forms/
@@ -11,31 +9,10 @@ import { useEffect } from 'react'
 const Default = ({ children }) => {
   const socket = useSocket('http://localhost:8080/auth')
   const router = useRouter()
-  const { token } = useToken()
-  const dispatch = useDispatch()
   const user = useSelector(state => state.user.user)
   if (user) {
     router.push('/')
   }
-  useEffect(() => {
-    if (!user) {
-      if (token) {
-        getData('profile/user', {}, token)
-          .then(user => {
-            dispatch(setUser(user.data))
-            router.push('/')
-          })
-      }
-    }
-    getData('category/class')
-      .then(({ data }) => {
-        dispatch(setClasses(data))
-      })
-    getData('category/subject')
-      .then(({ data }) => {
-        dispatch(setSubjects(data))
-      })
-  }, [])
   
   useEffect(() => {
     if (socket) {

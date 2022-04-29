@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import AuthLayout from 'layouts/auth'
+import AuthLayout from '~/layouts/auth'
 import Link from "next/link"
 import styles from './Login.module.scss'
 const Login = () => {

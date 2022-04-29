@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
-import AuthLayout from 'layouts/auth'
 import Link from "next/link"
+import AuthLayout from '~/layouts/auth'
 import styles from './Forgot.module.scss'
 const Register = () => {
   const meta = {
