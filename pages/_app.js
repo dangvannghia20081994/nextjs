@@ -8,7 +8,7 @@ import SSRProvider from 'react-bootstrap/SSRProvider';
 
 import Default from '~/layouts/default'
 import { getData } from '~/utils/request'
-import store, { setUser, setClasses, setSubjects } from '~/store'
+import store, { setUser, setClasses, setSubjects, setBanners } from "~/store";
 import { accessToken } from '~/common/hook/useToken'
 import '~/styles/globals.scss'
 
@@ -21,11 +21,12 @@ Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-const MyApp = ({ Component, pageProps, user, classes, subjects, message }) => {
+const MyApp = ({ Component, pageProps, user, classes, subjects, banners, message }) => {
   useEffect(() => {
     if (user) store.dispatch(setUser(user))
     if (classes) store.dispatch(setClasses(classes))
     if (subjects) store.dispatch(setSubjects(subjects))
+    if (banners) store.dispatch(setBanners(banners));
   }, [])
   const Layout = Component.Layout || Default
 
@@ -51,6 +52,7 @@ MyApp.getInitialProps = async ({ ctx: { req } }) => {
   let user = null
   let classes = null
   let subjects = null
+  let banners = []
   if (req) {
     const cookies = req.cookies
     if (cookies[accessToken]) {
@@ -61,11 +63,14 @@ MyApp.getInitialProps = async ({ ctx: { req } }) => {
     classes = classes_
     const { data: subjects_ } = await getData('category/subject')
     subjects = subjects_
+    const { data: banners_ } = await getData("config/banner");
+    banners = banners_;
   }
   return {
     user,
     classes,
-    subjects
-  }
+    subjects,
+    banners,
+  };
 }
 export default MyApp

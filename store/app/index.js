@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   classes: [],
   subjects: [],
+  banners: [],
   classActive: null,
   showModalQuestion: false
 }
@@ -15,6 +16,9 @@ export const appSlice = createSlice({
     setSubjects: (state, action) => {
       state.subjects = action.payload
     },
+    setBanners: (state, action) => {
+      state.banners = action.payload;
+    },
     setClassActive: (state, action) => {
       state.classActive = action.payload
     },
@@ -23,5 +27,5 @@ export const appSlice = createSlice({
     },
   },
 })
-export const { setClasses, setSubjects, setClassActive, setShowModalQuestion } = appSlice.actions
+export const { setClasses, setSubjects, setBanners, setClassActive, setShowModalQuestion } = appSlice.actions
 export default appSlice.reducer

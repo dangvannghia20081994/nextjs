@@ -33,7 +33,7 @@ const Notify = (props) => {
   const [query, setQuery] = useState({
     offset: 0,
     level: 1,
-    limit: 5
+    limit: 10
   })
   const [isLoading, setIsLoading] = useState(false)
   const [more, setMore] = useState(false)

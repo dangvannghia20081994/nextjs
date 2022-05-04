@@ -124,7 +124,7 @@ const Question = () => {
             <div className="col-lg-5">
               <div className={`${styles.listInfo}`} id="home-list-info">
                 <UserInfo className="mb-4" />
-                <RankInfo />
+                <RankInfo className="bg-white" />
               </div>
             </div>
           </div>
