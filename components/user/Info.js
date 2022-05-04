@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { ReactComponent as NumberQuestion } from '~/assets/icons/home/user/question.svg'
 import { ReactComponent as NumberAnswer } from '~/assets/icons/home/user/answer.svg'
-const Info = ({ className = '' }) => {
+const Info = ({ className = 'bg-light', ...props }) => {
   return (
-    <div className={`user-info bg-light px-4 pb-3 shadow rounded-2 ${className}`}>
+    <div className={`user-info px-4 pb-3 shadow rounded-2 ${className}`}>
       <div className='h2 fw-bold py-4 mb-0'>Thông tin</div>
       <div className='d-flex'>
         <div className='flex-shrink-0'>

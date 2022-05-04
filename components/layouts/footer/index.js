@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import styles from './Footer.module.scss'
 import { ReactComponent as Mobile } from '~/assets/icons/footer/mobile.svg'
 import { ReactComponent as Email } from '~/assets/icons/footer/email.svg'
 import Logo from '~/assets/icons/footer/logo.svg'
@@ -10,14 +9,14 @@ import Chplay from '~/assets/icons/footer/chplay.svg'
 import Appstore from '~/assets/icons/footer/appstore.svg'
 const Footer = () => {
   return (
-    <footer className={styles.footer}>
+    <footer className={`py-3 px-0 px-lg-4 h5 mb-0`}>
       <div className='container'>
         <div className='row gy-3'>
-          <div className='col-lg-12 mt-0'>
+          <div className='col-lg-12'>
             <Image src={Logo} width={210} height={65} loading="lazy" alt='' />
           </div>
           <div className="col-lg-6">
-            <div className={`white-space-break des pb-2 ${styles.des}`}>
+            <div className={`white-space-break pb-2 lh-lg`}>
               <b>Công ty chủ quản:</b> Công ty Cổ phần Đầu tư Phát triển Công nghệ Điện tử Viễn thông (Elcom Corp){'\n'}
               <b>Trụ sở chính:</b> Tòa nhà ELCOM, phố Duy Tân,quận ​Cầu Giấy,thành phố Hà Nội, Việt Nam{'\n'}
               <b>Giấy chứng nhận ĐKKD:</b> số 0101435127 do Sở Kế hoạch & Đầu tư Thành phố Hà Nội.{'\n'}
@@ -26,7 +25,7 @@ const Footer = () => {
             </div>
             <Image src={Notify} width={170} height={65} loading="lazy" alt='' />
           </div>
-          <div className="col-lg-2">
+          <div className="col-6 col-lg-2">
             <div className='title text-uppercase fw-bold'>Thông tin</div>
             <div className="list pt-3">
               <div className='item pb-2'>Giới thiệu</div>
@@ -36,7 +35,7 @@ const Footer = () => {
               <div className='item'>Hướng dẫn sử dụng</div>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-6 col-lg-2">
             <div className='title text-uppercase fw-bold'>Dịch vụ</div>
             <div className="list pt-3">
               <div className='item pb-2'>Hỏi bài</div>
@@ -44,7 +43,7 @@ const Footer = () => {
               <div className='item'>Thư viện</div>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-8 col-lg-2">
             <div className='title text-uppercase fw-bold'>Hỗ trợ khách hàng</div>
             <div className="list pt-3">
               <div className='item pb-2'><Mobile className="me-2" />Hotline: 1900866648</div>
@@ -67,7 +66,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className='border-top my-3'></div>
+        <div className='border-top my-2 my-lg-3'></div>
         <div className='small'>© 2020 - Bản quyền thuộc về Công ty cổ phần Elcom</div>
       </div>
     </footer>

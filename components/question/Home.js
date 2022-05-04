@@ -1,8 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import Comment from '~/assets/icons/home/question/comment.svg'
+import NoAvatar from '~/assets/icons/no-avatar.svg'
 import { ReactComponent as Typing } from '~/assets/icons/home/question/typing.svg'
-const Home = () => {
+const Home = (props) => {
   return (
     <div className='question-item border-bottom pt-3 px-3 pb-2'>
       <div className='user-info d-flex'>
@@ -21,17 +22,17 @@ const Home = () => {
         <div className='content text-start display-html pt-3'>a ta có ƯCLN18;30=6 . Hãy viết tập hợp A các ước của 6 . Nêu nhận xét về tập hợp ƯC18;30 và tập hợp A ta có thể tìm tập hợp các ước của ƯCLNa,b a ta có ƯCLN18;3=6 . Hãy viết tập hợp A các ước của 6 . Nêu nhận xét về tập hợp ƯC18;30 và tập hợp A ta có thể tìm tập hợp các ước của ƯCLNa,b a ta có ƯCLN18;30=6 . Hãy viết tập hợp A các ước của 6 . Nêu nhận xét về tập hợp ƯC18;30 và tập hợp A ta có thể tìm tập hợp các ước của ƯCLNa,b a ta có ƯCLN18;30=6 . Hãy viết tập hợp A các ước của 6 . Nêu nhận xét về tập hợp ƯC18;30 và tập hợp A ta có thể tìm tập hợp các ước của ƯCLN(a,b)</div>
         <Image src='https://api-dev.colearn.vn:8413/v1.0/upload/qa/image/25032022/colearn-MozGEd.jpg' objectFit='cover' width={450} height={200} alt="image" className='pt-3' />
       </div>
-      <div className='comment d-flex align-items-center'>
+      <div className='d-flex align-items-center'>
         <Image src={Comment} width={30} height={30} alt="comment" /> <span className='ms-1 me-2'>1</span>
-        <span className='user position-relative ms-1'>
+        <span className='position-relative ms-1 d-flex'>
           <img src='https://api-dev.colearn.vn:8413/v1.0/upload/qa/image/05112021/3285eb0c-04b2-4cab-b6a1-ad84d9885ffc.jpg' className='avatar' alt='avatar' />
         </span>
-        <span className='user position-relative ms-1'>
+        <span className='position-relative ms-1 d-flex'>
           <img src='https://api-dev.colearn.vn:8413/v1.0/upload/qa/image/05112021/3285eb0c-04b2-4cab-b6a1-ad84d9885ffc.jpg' className='avatar' alt='avatar' />
           <div className='backdrop position-absolute top-0 end-0 bottom-0 start-0 bg-black rounded-circle'></div>
           <div className='number position-center text-white small'>+1</div>
         </span>
-        <span className='user position-relative ms-1'>
+        <span className='position-relative ms-1 d-flex'>
           <img src='https://api-dev.colearn.vn:8413/v1.0/upload/qa/image/05112021/3285eb0c-04b2-4cab-b6a1-ad84d9885ffc.jpg' className='avatar' alt='avatar' />
           <div className='backdrop position-absolute top-0 end-0 bottom-0 start-0 bg-black rounded-circle'></div>
           <div className='typing position-center'>

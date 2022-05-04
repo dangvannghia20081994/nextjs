@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroller'
 import { ReactComponent as Notification } from '~/assets/icons/header/notify/notify.svg'
 import NoAvatar from '~/assets/icons/no-avatar.svg'
 import { getData } from '~/utils/request'
-const Item = ({ item, className}) => {
+const Item = ({ item, className, ...props}) => {
   return (
     <div className={`d-flex item pb-1 mb-1 ${className}`}>
       <div className='flex-shrink-0 me-2'>
@@ -29,7 +29,7 @@ const SkeletonItem = () => {
     </div>
   )
 }
-const Notify = () => {
+const Notify = (props) => {
   const [query, setQuery] = useState({
     offset: 0,
     level: 1,
@@ -55,7 +55,7 @@ const Notify = () => {
   }, [list])
   
   return (
-    <div className='me-4 position-relative py-3 d-flex notify'>
+    <div className='me-4 position-relative py-3 d-none d-lg-flex notify'>
       <Notification className="pointer" />
       <div className='list-data position-absolute top-100 mw-100 end-0 overflow-auto rounded-1 border bg-white text-body p-3 scrollbar'>
         <InfiniteScroll

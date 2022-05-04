@@ -2,6 +2,10 @@ import { DefaultSeo } from 'next-seo'
 import SEO from 'next-seo.config'
 import { Provider as AppProvider } from 'react-redux'
 import { useEffect } from 'react'
+import { MathJaxContext } from "better-react-mathjax";
+import SSRProvider from 'react-bootstrap/SSRProvider';
+
+
 import Default from '~/layouts/default'
 import { getData } from '~/utils/request'
 import store, { setUser, setClasses, setSubjects } from '~/store'
@@ -16,7 +20,7 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
-import SSRProvider from 'react-bootstrap/SSRProvider';
+
 const MyApp = ({ Component, pageProps, user, classes, subjects, message }) => {
   useEffect(() => {
     if (user) store.dispatch(setUser(user))
@@ -24,15 +28,23 @@ const MyApp = ({ Component, pageProps, user, classes, subjects, message }) => {
     if (subjects) store.dispatch(setSubjects(subjects))
   }, [])
   const Layout = Component.Layout || Default
+
+  const config = {
+    options: {
+      enableMenu: false,
+    }
+  };
   return (
-    <SSRProvider>
-      <AppProvider store={store}>
-        <Layout>
-          <DefaultSeo {...SEO} />
-          <Component {...pageProps} />
-        </Layout>
-      </AppProvider>
-    </SSRProvider>
+    <MathJaxContext config={config}>
+      <SSRProvider>
+        <AppProvider store={store}>
+          <Layout>
+            <DefaultSeo {...SEO} />
+            <Component {...pageProps} />
+          </Layout>
+        </AppProvider>
+      </SSRProvider>
+    </MathJaxContext>
   )
 }
 MyApp.getInitialProps = async ({ ctx: { req } }) => {

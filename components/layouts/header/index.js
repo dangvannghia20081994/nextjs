@@ -6,7 +6,7 @@ import { ReactComponent as Logo } from '~/assets/icons/header/logo.svg'
 import Notify from './Notify'
 import Profile from './Profile'
 import Sub from './Sub'
-const Header = () => {
+const Header = (props) => {
   const listMenu = [
     { url: '/', name: 'Trang chủ' },
     { url: '/hoi-bai', name: 'Hỏi bài' },
@@ -26,7 +26,7 @@ const Header = () => {
                 <Logo />
               </a>
             </Link>
-            <div className='d-flex ms-4 list-menu'>
+            <div className='d-none d-lg-flex ms-lg-4 list-menu'>
               {listMenu.map((it, ind) => (
                 <Link key={ind} href={it.url}>
                   <a className={`item ${router.asPath === it.url ? "bg-warning fw-bold" : ""}`}>{ it.name }</a>

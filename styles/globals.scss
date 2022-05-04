@@ -71,3 +71,18 @@ img, iframe, embed {
   object-fit: cover;
   border-radius: 50%;
 }
+@keyframes masihscroll {
+  0% {transform: translateY(0%) scale(1.5);}
+  50% {transform: translateY(-70%) scale(1.5);}
+  100% {transform: translateY(0%) scale(1.5);}
+}
+img{
+  &.auto-scroll{
+    &:hover{
+      transition: all 1s;
+      animation-duration: 25s;
+      animation-name: masihscroll;
+      animation-iteration-count: infinite;
+    }
+  }
+}

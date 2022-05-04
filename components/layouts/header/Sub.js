@@ -17,17 +17,19 @@ const Sub = () => {
     if (ind > menu.children.length - 2) {
       ind = menu.children.length - 2
     }
-    if (ind >= 0) {
-      const active = subjects[ind]
-      dispatch(setClassActive(active))
-    }
+    const active = subjects[ind] || null
+    dispatch(setClassActive(active))
     setActive(ind)
     if (ind === '') {
       ind = 0
     }
     if (menu) {
+      let left = (ind - 4) * 110
+      if (window.innerWidth < 992) {
+        left = ind * 110 - 50
+      }
       menu.scrollTo({
-        left: (ind - 4) * 110,
+        left,
         behavior: 'smooth'
       })
     }
@@ -36,12 +38,12 @@ const Sub = () => {
     <>
       <div className='bg-white text-body position-relative shadow' style={{ zIndex: 90 }}>
         <div className='container'>
-          <div className='sub-global d-flex align-items-center'>
+          <div className='sub-global d-flex align-items-center overflow-auto text-nowrap'>
             <span className='py-3 me-4 pointer'>Xem trả lời</span>
             <span className='py-3 me-4 pointer'>Bảng xếp hạng</span>
             <span className='py-3 me-4 pointer'>Nội quy hỏi bài</span>
             <span className='py-3 pointer'>Cơ chế cộng điểm</span>
-            <span className='ms-auto'>
+            <span className='ms-5 ms-lg-auto'>
               <button className='bg-warning rounded-4 text-white py-2 fw-bold px-4'>
                 <AddQuestion className="me-2" />Đặt câu hỏi
               </button>
