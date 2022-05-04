@@ -3,6 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 const withPWA = require('next-pwa')
 const nextConfig = {
+  reactStrictMode: true,
   trailingSlash: false,
   eslint: {
     dirs: ['pages', 'utils', 'layouts', 'components'], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
@@ -39,7 +40,6 @@ const nextConfig = {
   //     },
   //   ]
   // },
-  reactStrictMode: true,
   pwa: {
     disable: process.env.NODE_ENV === "development",
     dest: "public",

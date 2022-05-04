@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { getData } from "~/utils/request";
@@ -31,25 +31,26 @@ const Index = () => {
     id: it.id,
     label: it.name,
   }));
-  const loadData = async () => {
-    if (loading) {
-      return;
-    }
-    setLoading(true);
-
-    const { data } = await getData("qa", query);
-    if (query.page === 1) {
-      setList(data);
-    } else {
-      setList((prev) => [...prev, ...data]);
-    }
-    setQuery((prev) => ({
-      ...prev,
-      page: prev.page++,
-      offset: prev.offset + data.length,
-    }));
-    setLoading(false);
-  };
+  const loadData = useCallback(
+    async () => {
+      if (loading) {
+        return;
+      }
+      setLoading(true);
+      const { data } = await getData("qa", query);
+      if (query.page === 1) {
+        setList(data);
+      } else {
+        setList((prev) => [...prev, ...data]);
+      }
+      setQuery((prev) => ({
+        ...prev,
+        page: prev.page++,
+        offset: prev.offset + data.length,
+      }));
+      setLoading(false);
+    }, [],
+  )
   useEffect(() => {
     setQuery((prev) => ({
       ...prev,
