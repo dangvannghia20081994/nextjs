@@ -1,5 +1,6 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
+import { useRouter } from "next/router";
 import { setClassActive } from '~/store'
 import { ReactComponent as AddQuestion } from '~/assets/icons/header/sub/add-question.svg'
 import { ReactComponent as ArrowLeft } from '~/assets/icons/header/sub/arrow-left-black.svg'
@@ -9,6 +10,7 @@ const Sub = () => {
   const subjects = useSelector(state => state.app.subjects) || []
   const [active, setActive] = useState(-1)
   const dispatch = useDispatch()
+  const router = useRouter();
   const scrollToMenu = (ind) => {
     const menu = menuRef.current
     if (ind < -1) {
@@ -34,6 +36,13 @@ const Sub = () => {
       })
     }
   }
+  useEffect(() => {
+    const slug = router.query?.slug || null;
+    const check = subjects.findIndex((it) => it.slug === slug);
+    if (check >= 0) {
+      scrollToMenu(check);
+    }
+  }, [])
   return (
     <>
       <div className='bg-white text-body position-relative shadow' style={{ zIndex: 90 }}>

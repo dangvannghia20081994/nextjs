@@ -29,7 +29,7 @@ const Header = (props) => {
             <div className='d-none d-lg-flex ms-lg-4 list-menu'>
               {listMenu.map((it, ind) => (
                 <Link key={ind} href={it.url}>
-                  <a className={`item ${router.asPath === it.url ? "bg-warning fw-bold" : ""}`}>{ it.name }</a>
+                  <a className={`item ${router.pathname === it.url || router.asPath === it.url ? "bg-warning fw-bold" : ""}`}>{ it.name }</a>
                 </Link>
               ))}
             </div>

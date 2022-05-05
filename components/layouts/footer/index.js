@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import dynamic from "next/dynamic";
 import { ReactComponent as Mobile } from '~/assets/icons/footer/mobile.svg'
 import { ReactComponent as Email } from '~/assets/icons/footer/email.svg'
 import Logo from '~/assets/icons/footer/logo.svg'
@@ -7,7 +8,9 @@ import Notify from '~/assets/icons/footer/notify.svg'
 import Qrcode from '~/assets/icons/footer/qrcode.svg'
 import Chplay from '~/assets/icons/footer/chplay.svg'
 import Appstore from '~/assets/icons/footer/appstore.svg'
-import ModalLogin from 'components/modal/Login'
+const ModalLogin = dynamic(() => import("components/modal/Login"), {
+  ssr: false,
+});
 const Footer = () => {
   return (
     <div>

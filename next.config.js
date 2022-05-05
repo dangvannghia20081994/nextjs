@@ -26,10 +26,15 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: '/',
-        destination: '/home',
-      }
-    ]
+        source: "/",
+        destination: "/home",
+      },
+      {
+        // source: "/hoi-bai/:slug*",
+        source: "/hoi-bai/:slug",
+        destination: "/hoi-bai",
+      },
+    ];
   },
   // async redirects() {
   //   return [

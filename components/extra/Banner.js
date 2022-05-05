@@ -28,7 +28,6 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
   }, [banners])
   const handerClick = () => {
     const url = active.url;
-    console.log(url);
     if (!url) return
     switch (url) {
       case '#login':
@@ -56,7 +55,7 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
   if (!active) return
   return (
     <div className={`${className}`}>
-      {isSystem ? (
+      {!isSystem ? (
         <img src={active.link} alt={active.name} onClick={handerClick} />
       ) : (
         <a href={active.url} title={active.name} target="_blank">

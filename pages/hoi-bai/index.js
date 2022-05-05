@@ -31,26 +31,24 @@ const Index = () => {
     id: it.id,
     label: it.name,
   }));
-  const loadData = useCallback(
-    async () => {
-      if (loading) {
-        return;
-      }
-      setLoading(true);
-      const { data } = await getData("qa", query);
-      if (query.page === 1) {
-        setList(data);
-      } else {
-        setList((prev) => [...prev, ...data]);
-      }
-      setQuery((prev) => ({
-        ...prev,
-        page: prev.page++,
-        offset: prev.offset + data.length,
-      }));
-      setLoading(false);
-    }, [],
-  )
+  const loadData = async () => {
+    if (loading) {
+      return;
+    }
+    setLoading(true);
+    const { data } = await getData("qa", query);
+    if (query.page === 1) {
+      setList(data);
+    } else {
+      setList((prev) => [...prev, ...data]);
+    }
+    setQuery((prev) => ({
+      ...prev,
+      page: prev.page++,
+      offset: prev.offset + data.length,
+    }));
+    setLoading(false);
+  }
   useEffect(() => {
     setQuery((prev) => ({
       ...prev,
@@ -58,6 +56,7 @@ const Index = () => {
       page: 1,
       offset: 0,
     }));
+    window.scrollTo(0,0)
   }, [active]);
   useEffect(() => {
     loadData();
