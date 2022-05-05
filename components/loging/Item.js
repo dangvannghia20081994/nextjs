@@ -30,7 +30,12 @@ const Item = ({ item, className= '', ...props }) => {
     return html;
   };
   return (
-    <div className={`${className}`} dangerouslySetInnerHTML={{ __html: getHtmlNotify() }}></div>
+    <div className={`${className}`} >
+      <div dangerouslySetInnerHTML={{ __html: getHtmlNotify() }}></div>
+      {item.title && (
+        <div className='small text-secondary' dangerouslySetInnerHTML={{ __html: item.title }}></div>
+      )}
+    </div>
   );
 };
 

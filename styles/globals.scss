@@ -86,3 +86,8 @@ img{
     }
   }
 }
+.no-caret{
+  &::before, &::after{
+    content: unset;
+  }
+}

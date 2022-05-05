@@ -1,7 +1,8 @@
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
+import Dropdown from 'react-bootstrap/Dropdown'
 import InfiniteScroll from 'react-infinite-scroller'
 import { ReactComponent as Notification } from '~/assets/icons/header/notify/notify.svg'
 import NoAvatar from '~/assets/icons/no-avatar.svg'
@@ -38,7 +39,7 @@ const Notify = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [more, setMore] = useState(false)
   const [list, setList] = useState([])
-  const loadFunc = async () => {
+  const loadFunc = useCallback(async () => {
     if (!isLoading) {
       setIsLoading(true)
       const { data: { listNoti: datas } } = await getData('notify/get-notify-user', query)
@@ -46,7 +47,7 @@ const Notify = (props) => {
       setMore(query.limit <= datas.length)
       setIsLoading(false)
     }
-  }
+  })
   useEffect(() => {
     loadFunc()
   }, [])
@@ -55,36 +56,35 @@ const Notify = (props) => {
   }, [list])
   
   return (
-    <div className='me-4 position-relative py-3 d-none d-lg-flex notify'>
-      <Notification className="pointer" />
-      <div className='list-data position-absolute top-100 mw-100 end-0 overflow-auto rounded-1 border bg-white text-body p-3 scrollbar'>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={loadFunc}
-          hasMore={more}
-          loader={
-            Array(5).fill(0).map((it, ind) => (
-              <SkeletonItem key={ind} />
-            ))
-          }
-          useWindow={false}>
-          {list.map((item, ind) => (
-            <Item key={ind} item={item} className={`border-bottom`}/>
-          ))}
-        </InfiniteScroll>
-      </div>
-      <style jsx>{`
-        .notify:hover .list-data {
-          display: block;
-        }
-        .notify .list-data {
-          display: none;
+    <div className='me-4 position-relative d-none d-lg-flex notify'>
+      <Dropdown align='end' className='py-3' id="dropdown-notify-header">
+        <Dropdown.Toggle as={"div"} variant='transparent' className="no-caret">
+          <Notification className="pointer" />
+        </Dropdown.Toggle>
+        <Dropdown.Menu className="list-data rounded-1 scrollbar px-3 top-100">
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={loadFunc}
+            hasMore={more}
+            loader={
+              Array(5).fill(0).map((it, ind) => (
+                <SkeletonItem key={ind} />
+              ))
+            }
+            useWindow={false}>
+            {list.map((item, ind) => (
+              <Item key={ind} item={item} className={`border-bottom`}/>
+            ))}
+          </InfiniteScroll>
+        </Dropdown.Menu>
+      </Dropdown>
+      <style jsx global>{`
+        #dropdown-notify-header .list-data {
           min-width: 250px;
           max-height: 300px;
-        }`
-      }</style>
-      <style jsx global>{`
-        .notify .list-data > div > .item:last-child {
+          transform: unset !important;
+        }
+        #dropdown-notify-header .list-data > div > .item:last-child {
           border-bottom: 0 !important;
           margin-bottom:0 !important;
           padding-bottom:0 !important;

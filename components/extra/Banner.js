@@ -27,7 +27,6 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
     setIsSystem(inSystem())
   }, [banners])
   const handerClick = () => {
-    console.log(active)
     if (!active.url) return
     const url = active.url;
     switch (url) {

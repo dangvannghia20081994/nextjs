@@ -15,7 +15,6 @@ const Select = ({ list = [], placeholder = 'Chọn giá trị', selected = null,
     <>
       <Dropdown className={`custom-select d-inline-block ${className}`} align={align}>
         <Dropdown.Toggle className={`${props.toggle} rounded-2 border text-start position-relative shadow-none`} variant="light" id={id}>
-          {/* {selected === null ? placeholder : (actived?.label)} */}
           {!actived ? placeholder : actived.label}
         </Dropdown.Toggle>
         <Dropdown.Menu className="rounded-2 scrollbar">

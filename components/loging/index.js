@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useTransition } from "react";
+import React, { useState, useCallback } from "react";
 import Item from './Item'
 import { getData } from '~/utils/request'
 import InfiniteScroll from "react-infinite-scroller";
@@ -6,10 +6,9 @@ const index = ({ item, className = 'bg-white', ...props }) => {
   const [list, setList] = useState([])
   const [query, setQuery] = useState({
     offset: 0,
-    limit: 10,
+    limit: 20,
     level: 0,
   });
-  const [isPending, startTransition] = useTransition();
   const [loading, setLoading] = useState(false)
   const [more, setMore] = useState(true)
   const loadData = useCallback(async () => {
@@ -17,9 +16,7 @@ const index = ({ item, className = 'bg-white', ...props }) => {
     setLoading(true)
     const { data: { listNoti } } = await getData("notify/get-notify-user", query);
     setList(prev => [...prev, ...listNoti])
-    startTransition(() => {
-      setQuery((prev) => ({ ...prev, offset: query.offset + listNoti.length }));
-    })
+    setQuery((prev) => ({ ...prev, offset: query.offset + listNoti.length }));
     setMore(query.limit === listNoti.length)
     setLoading(false);
   });
