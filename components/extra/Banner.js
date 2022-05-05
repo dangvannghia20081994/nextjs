@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { setShowModalQuestion } from '~/store'
+import { setShowModalLogin, setShowModalRegister, setShowModalQuestion } from "~/store";
 const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className='', ...props }) => {
   type = type.toUpperCase()
   const banners = useSelector(state => state.app.banners);
@@ -27,33 +27,44 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
     setIsSystem(inSystem())
   }, [banners])
   const handerClick = () => {
-    if (!active.url) return
     const url = active.url;
+    console.log(url);
+    if (!url) return
     switch (url) {
       case '#login':
         if (!user) {
-          // this.$bvModal.show('login')
+          dispatch(setShowModalLogin(true));
         }
         break
       case '#register':
         if (!user) {
-          // this.$bvModal.show('register')
+          dispatch(setShowModalRegister(true));
         }
         break
       case '#question':
         if (!user) {
-          // this.$bvModal.show('login')
+          dispatch(setShowModalLogin(true));
         } else {
           dispatch(setShowModalQuestion(true))
         }
         break
       default:
+        location.href = active.url
         break
     }
   }
+  if (!active) return
   return (
-    <div className={`${className}`} onClick={handerClick}>{ JSON.stringify(active)}</div>
-  )
+    <div className={`${className}`}>
+      {isSystem ? (
+        <img src={active.link} alt={active.name} onClick={handerClick} />
+      ) : (
+        <a href={active.url} title={active.name} target="_blank">
+          <img src={active.link} alt={active.name} />
+        </a>
+      )}
+    </div>
+  );
 }
 
 export default Banner

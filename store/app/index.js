@@ -3,8 +3,7 @@ const initialState = {
   classes: [],
   subjects: [],
   banners: [],
-  classActive: null,
-  showModalQuestion: false
+  classActive: null
 }
 export const appSlice = createSlice({
   name: 'app',
@@ -21,11 +20,8 @@ export const appSlice = createSlice({
     },
     setClassActive: (state, action) => {
       state.classActive = action.payload
-    },
-    setShowModalQuestion: (state, action) => {
-      state.showModalQuestion = action.payload
-    },
+    }
   },
 })
-export const { setClasses, setSubjects, setBanners, setClassActive, setShowModalQuestion } = appSlice.actions
+export const { setClasses, setSubjects, setBanners, setClassActive } = appSlice.actions
 export default appSlice.reducer

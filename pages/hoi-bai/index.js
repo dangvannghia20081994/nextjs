@@ -153,7 +153,7 @@ const Index = () => {
             <UserInfo className="bg-white" />
             <Loging className="bg-white mt-3" />
             <Rank className="bg-white mt-3" />
-            <Banner type="BANNER_GURU_1_2" />
+            <Banner className="mt-3" type="BANNER_RIGHT" />
           </div>
         </div>
       </div>

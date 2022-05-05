@@ -1,17 +1,12 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Modal from "react-bootstrap/Modal";
 import { ClientOnly } from "components/extra";
 const Login = () => {
-  useEffect(() => {
-    setTimeout(() => {
-      var myModalEl = document.getElementById("modal-login");
-      console.log(myModalEl);
-    }, 2000);
-  }, [])
-  
+  const showModalLogin = useSelector((state) => state.modal.showModalLogin);
   return (
     <ClientOnly>
-      <Modal backdrop="static" centered id="modal-login">
+      <Modal show={showModalLogin} backdrop="static" centered>
         <Modal.Header>
           <Modal.Title>Custom Modal Styling</Modal.Title>
         </Modal.Header>
