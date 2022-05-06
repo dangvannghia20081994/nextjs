@@ -9,30 +9,31 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
   const [active, setActive] = useState(null);
   const [isSystem, setIsSystem] = useState(false)
   useEffect(() => {
-    const inSystem = () => {
-      if (!active) {
+    const inSystem = (banner) => {
+      if (!banner) {
         return false;
       }
-      const url = active.url;
+      const url = banner.url;
       switch (url) {
-        case '#login':
-        case '#register':
-        case '#question':
-          return true
+        case "#login":
+        case "#register":
+        case "#question":
+          return true;
         default:
-          return false
+          return false;
       }
-    }
-    setActive(banners.find((item) => item.code === type))
-    setIsSystem(inSystem())
+    };
+    const banner = banners.find((item) => item.code === type);
+    setActive(banner);
+    setIsSystem(inSystem(banner));
   }, [banners])
   const handerClick = () => {
     const url = active.url;
     if (!url) return
     switch (url) {
       case '#login':
+        dispatch(setShowModalLogin(true));
         if (!user) {
-          dispatch(setShowModalLogin(true));
         }
         break
       case '#register':
@@ -55,7 +56,7 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
   if (!active) return
   return (
     <div className={`${className}`}>
-      {!isSystem ? (
+      {isSystem ? (
         <img src={active.link} alt={active.name} onClick={handerClick} />
       ) : (
         <a href={active.url} title={active.name} target="_blank">

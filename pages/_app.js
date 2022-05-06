@@ -10,6 +10,7 @@ import Default from '~/layouts/default'
 import { getData } from '~/utils/request'
 import store, { setUser, setClasses, setSubjects, setBanners } from "~/store";
 import { accessToken } from '~/common/hook/useToken'
+import '~/styles/modal/Login.scss'
 import '~/styles/globals.scss'
 
 import Router from 'next/router';
