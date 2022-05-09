@@ -1,27 +1,6 @@
-const formatNumber = (number) => {
-  return number < 10 ? '0' + number : number
-}
+import moment from 'moment'
 export const relativeTime = (timeStamp) => {
-  const time = timeStamp * 1000
-  const d = new Date(time)
-  const now = Date.now()
-  let diff = (now - d) / 1000
-  if (diff < 0) {
-    const dUtc = new Date(time - 7 * 3600000)
-    diff = (now - dUtc) / 1000
-  }
-  if (diff < 30) {
-    return 'Vừa xong'
-  } else if (diff < 3600) {
-    // less 1 hour
-    return Math.ceil(diff / 60) + ' phút' + ' trước'
-  } else if (diff < 3600 * 24) {
-    return Math.ceil(diff / 3600) + ' giờ' + ' trước'
-  } else if (diff < 3600 * 24 * 2) {
-    return '1 ngày trước'
-  } else {
-    return [ formatNumber(d.getHours()), formatNumber(d.getMinutes())].join(':') + ' ' + [formatNumber(d.getDate()), formatNumber((d.getMonth() + 1)), d.getFullYear()].join('/')
-  }
+  return moment(timeStamp * 1000).startOf().fromNow();
 }
 export const getSubString = (string, number) => {
   let subString = string.substr(0, number)

@@ -22,6 +22,7 @@ const Index = () => {
   const [suppend, setSuppend] = useState(true);
   const [loading, setLoading] = useState(false);
   const [list, setList] = useState([]);
+  const user = useSelector((state) => state.user.user);
   const active = useSelector((state) => state.app.classActive);
   const classes = useSelector((state) => state.app.classes).map((it) => ({
     id: it.id,
@@ -110,8 +111,24 @@ const Index = () => {
                 selected={query.class_id}
                 className={`me-2`}
               />
-              <Select id="custom-select-subject" list={subjects} toggle="bg-white fw-normal" placeholder="Chọn môn" handerSelect={handerSelectSubject} selected={query.category_id} className={`me-2`}/>
-              <Select id="custom-select-status" list={listStatus} toggle="bg-white fw-normal" placeholder="Trạng thái câu hỏi" handerSelect={handerSelectStatus} selected={query.question_status} className={``}/>
+              <Select
+                id="custom-select-subject"
+                list={subjects}
+                toggle="bg-white fw-normal"
+                placeholder="Chọn môn"
+                handerSelect={handerSelectSubject}
+                selected={query.category_id}
+                className={`me-2`}
+              />
+              <Select
+                id="custom-select-status"
+                list={listStatus}
+                toggle="bg-white fw-normal"
+                placeholder="Trạng thái câu hỏi"
+                handerSelect={handerSelectStatus}
+                selected={query.question_status}
+                className={``}
+              />
               <Search className="ms-1 ms-lg-auto" handleSearch={handleSearch} />
             </div>
             <div className="text-center text-primary bg-white fw-bold py-2 shadow mt-3 rounded-1">
@@ -119,7 +136,10 @@ const Index = () => {
             </div>
             <div className="list-question">
               {list.map((it, ind) => (
-                <QuestionItem key={ind} item={it} className="mt-3 question-item bg-white shadow rounded-2 py-3 px-4"
+                <QuestionItem
+                  key={ind}
+                  item={it}
+                  className="mt-3 question-item bg-white shadow rounded-2 py-3 px-4"
                 />
               ))}
             </div>
@@ -130,8 +150,12 @@ const Index = () => {
             </div>
           </div>
           <div className="col-lg-4">
-            <UserInfo className="bg-white" />
-            <Loging className="bg-white mt-3" />
+            {user && (
+              <>
+                <UserInfo className="bg-white" />
+                <Loging className="bg-white mt-3" />
+              </>
+            )}
             <Rank className="bg-white mt-3" />
             <Banner className="mt-3" type="BANNER_ADVERTISE" />
           </div>

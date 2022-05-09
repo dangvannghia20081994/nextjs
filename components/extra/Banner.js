@@ -59,7 +59,7 @@ const Banner = ({ type = 'BANNER_HOME', width = 1920, height = 500, className=''
       {isSystem ? (
         <img src={active.link} alt={active.name} onClick={handerClick} />
       ) : (
-        <a href={active.url} title={active.name} target="_blank">
+        <a href={active.url} title={active.name} target="_blank" rel="noreferrer">
           <img src={active.link} alt={active.name} />
         </a>
       )}

@@ -1,5 +1,6 @@
 import { NextSeo } from "next-seo";
 import { useState, useEffect, useCallback } from "react";
+import { useSelector } from "react-redux";
 import Image from "next/image";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -21,6 +22,7 @@ import UserInfo from "components/user/Info";
 
 //Function component
 const Question = () => {
+  const user = useSelector((state) => state.user.user);
   const [selected, setSelected] = useState({
     class: null,
     subject: null,
@@ -56,9 +58,11 @@ const Question = () => {
   };
   useEffect(() => {
     const blockInfo = document.querySelector("#home-list-info");
-    if (window.innerWidth > 576) {
-      setHeight(blockInfo.clientHeight);
-    }
+    setTimeout(() => {
+      if (window.innerWidth > 576) {
+        setHeight(blockInfo.clientHeight);
+      }
+    }, 500);
   }, []);
 
   return (
@@ -68,8 +72,7 @@ const Question = () => {
           className={`${styles.title} text-center text-uppercase fw-bold position-relative`}>
           Hỏi bài
         </div>
-        <div
-          className={`${styles.form} mt-4 bg-white py-4 px-3 shadow rounded-2`}>
+        <div className={`mt-4 bg-white py-4 px-3 shadow rounded-2`}>
           <div className="row gy-4">
             <div className="col-lg-7 d-none d-lg-block">
               <Select
@@ -108,7 +111,7 @@ const Question = () => {
             </div>
             <div className="col-lg-7">
               <div
-                className={`${styles.listQuestion} border shadow rounded-2 scrollbar`}
+                className={`border shadow rounded-2 scrollbar`}
                 id="home-list-question"
                 style={{ height }}>
                 {Array(5)
@@ -117,13 +120,15 @@ const Question = () => {
                     <QuestionItem key={ind} />
                   ))}
                 <div className="text-center text-primary fw-bold py-2 mb-0 pointer h3">
-                  Xem thêm & gt; & gt;
+                  Xem thêm &gt; &gt;
                 </div>
               </div>
             </div>
             <div className="col-lg-5">
-              <div className={`${styles.listInfo}`} id="home-list-info">
-                <UserInfo className="mb-4" />
+              <div className={``} id="home-list-info">
+                {user && (
+                  <UserInfo className="mb-4" />
+                )}
                 <RankInfo className="bg-white" />
               </div>
             </div>
