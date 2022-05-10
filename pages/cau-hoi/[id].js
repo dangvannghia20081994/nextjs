@@ -6,7 +6,7 @@ import UserInfo from "components/user/Info";
 import Loging from "components/loging";
 import Rank from "components/rank";
 import Banner from "components/extra/Banner";
-const index = () => {
+const Index = () => {
   const [queryAnswer, setQueryAnswer] = useState({
     class_id: "",
     category_id: ""
@@ -49,4 +49,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

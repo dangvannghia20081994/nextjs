@@ -2,7 +2,7 @@ import React, { useState, useCallback } from "react";
 import Item from './Item'
 import { getData } from '~/utils/request'
 import InfiniteScroll from "react-infinite-scroller";
-const index = ({ item, className = 'bg-white', ...props }) => {
+const Index = ({ item, className = 'bg-white', ...props }) => {
   const [list, setList] = useState([])
   const [query, setQuery] = useState({
     offset: 0,
@@ -43,4 +43,4 @@ const index = ({ item, className = 'bg-white', ...props }) => {
     </div>
   );
 }
-export default index
+export default Index;
