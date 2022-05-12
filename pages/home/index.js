@@ -172,6 +172,7 @@ const Home = ({ datas }) => {
           width={1920}
           height={630}
           alt="Banner"
+          priority
         />
       </Slider>
       <Question />

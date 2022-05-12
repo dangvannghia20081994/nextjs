@@ -18,17 +18,21 @@ import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
 import "moment/locale/vi";
 
-//Binding events.
-Router.events.on('routeChangeStart', () => NProgress.start())
-Router.events.on('routeChangeComplete', () => NProgress.done())
-Router.events.on('routeChangeError', () => NProgress.done())
-
-const MyApp = ({ Component, pageProps, user, classes, subjects, banners, message }) => {
+const MyApp = ({ Component, pageProps, user, classes, subjects, banners, ...props }) => {
   useEffect(() => {
+    //Binding events.
+    Router.events.on("routeChangeStart", () => NProgress.start());
+    Router.events.on("routeChangeComplete", () => NProgress.done());
+    Router.events.on("routeChangeError", () => NProgress.done());
     if (user) store.dispatch(setUser(user))
     if (classes) store.dispatch(setClasses(classes))
     if (subjects) store.dispatch(setSubjects(subjects))
     if (banners) store.dispatch(setBanners(banners));
+    return () => {
+      Router.events.off("routeChangeStart", () => NProgress.start());
+      Router.events.off("routeChangeComplete", () => NProgress.done());
+      Router.events.off("routeChangeError", () => NProgress.done());
+    }
   }, [])
   const Layout = Component.Layout || Default
 
@@ -50,16 +54,18 @@ const MyApp = ({ Component, pageProps, user, classes, subjects, banners, message
     </MathJaxContext>
   )
 }
-MyApp.getInitialProps = async ({ ctx: { req } }) => {
+MyApp.getInitialProps = async ({ ctx }) => {
   let user = null
   let classes = null
   let subjects = null
   let banners = []
+  const req = ctx.req;
   if (req) {
     const cookies = req.cookies
     if (cookies[accessToken]) {
       const { data } = await getData('profile/user', {}, cookies[accessToken])
       user = data
+      user.token = cookies[accessToken]
     }
     const { data: classes_ } = await getData('category/class')
     classes = classes_
