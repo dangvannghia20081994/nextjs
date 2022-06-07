@@ -4,8 +4,9 @@ import { useRouter } from 'next/router'
 const Test = () => {
   const router = useRouter()
   const query = router.query;
-  const [text, setText] = useState()
+  const [text, setText] = useState('')
   const resultRef = useRef()
+  const inputRef = useRef();
   const convertHTML = (str) => {
     const tag = document.querySelector("#html-convert");
     if (!tag) { return }
@@ -102,11 +103,14 @@ const Test = () => {
     resultRef.current.value = list.join('\n')
   };
   useEffect(() => {
+    const string = localStorage.getItem("string") || "";
     const rooms = localStorage.getItem("rooms") || '';
     resultRef.current.value = rooms;
+    inputRef.current.value = string;
   }, [])
   
   useEffect(() => {
+    if (text) localStorage.setItem("string", text);
     document.querySelector("#html-convert").innerHTML = text;
     convertHTML(text);
     getString();
@@ -116,6 +120,7 @@ const Test = () => {
     <div className="row">
       <div className="col-6">
         <textarea
+          ref={inputRef}
           className="w-100 min-vh-100"
           placeholder="Enter text"
           onChange={(e) => setText(e.target.value)}></textarea>
