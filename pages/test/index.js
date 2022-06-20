@@ -91,8 +91,9 @@ const Test = () => {
       }
       const td = tr.getElementsByTagName("td");
       let districtCode = 'all'
-      if (districtColumn === 12) {
+      if (districtColumn) {
         let districtName = td[districtColumn].textContent || td[districtColumn].innerText;
+        console.log(districtName);
         districtCode = removeVietnameseTones(districtName)
         if (!list[districtCode]) {
           list[districtCode] = [`// ${districtName}`];
